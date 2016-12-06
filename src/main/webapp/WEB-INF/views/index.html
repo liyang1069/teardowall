@@ -13,9 +13,12 @@
 
   <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
   <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <link href="asset/css/fat.css?id=99" media="all" rel="stylesheet" type="text/css">
-  <link href="asset/css/site.css?id=909" media="all" rel="stylesheet" type="text/css">
-  <link href="asset/css/docs.min.css?id=919" media="all" rel="stylesheet" type="text/css">
+  <link href="../../static/css/site.css?id=909" media="all" rel="stylesheet" type="text/css">
+  <link href="../../static/css/docs.min.css?id=919" media="all" rel="stylesheet" type="text/css">
+  <link href="../../static/css/fat.css?id=99" media="all" rel="stylesheet" type="text/css">
+  <script src="http://s1.bdstatic.com/r/www/cache/global/js/BaiduHttps_20150714_zhanzhang.js"></script>
+  <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
+  <script src="../../static/js/fat.js"></script>
 </head>
 <body class="home-template">
   <header class="navbar navbar-static-top bs-docs-nav top-header" id="top" role="banner">
@@ -25,20 +28,72 @@
     </div>
   </header>
   
-  <div class="site-header jumbotron">
+  <div class="site-header jumbotron sem-div">
     <div class="container">
       <div class="row">
-        <div class="col-xs-12">
-          <h1 id="sem_h1">Google</h1>
-          <form class="" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control search clearable" placeholder="搜索开源库，例如：jquery"> 
-              <i class="fa fa-search"></i>
-            </div>
+        <div class="col-md-12" id="baidu_div">
+          <h1 id="sem_h1" class="padding-bottom-30">Baidu</h1>
+          <form onsubmit="return baidu_with_https(this)" action="http://www.baidu.com/baidu" target="_blank">
+            <input name="tn" type="hidden" value="SE_zzsearchcode_shhzc78w">
+            <input type="text" class="form-control search clearable" onfocus="checkHttps" name="word" size="30" baiduSug="1">
           </form>
+        </div>
+        <div class="col-md-12" id="google_div">
+          <h1 id="sem_h1" class="padding-bottom-30">Baidu</h1>
+          <form action="http://www.google.com/search" target="_blank">
+            <input name="ie" value="UTF-8" type="hidden" />
+            <input type="text" class="form-control search clearable" name="q" size="30">
+          </form>
+        </div>
+        <div class="col-md-12 padding-top-30">
+          <p>
+            <button type="button" class="btn btn-primary btn-lg">Large button</button>
+            <button type="button" class="btn btn-primary btn-lg">Large button</button>
+            <button type="button" class="btn btn-default btn-lg">Large button</button>
+            <a href="javascript:void(0)" class="btn btn-default btn-lg active" role="button">Link</a>
+            <!-- <a href="#" class="a-border" target="_blank">&nbsp;Bing&nbsp;</a> -->
+          </p>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="common-icon">
+    
+  </div>
+
+  <div class="container bs-docs-container web-content">
+    <div class="row">
+      
+    </div>
+  </div>
+
+  <footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+      <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
+      <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
+      <p>本项目源码受 <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a> 开源协议保护，文档受 <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> 开源协议保护。</p>
+      <ul class="bs-docs-footer-links muted">
+        <li>当前版本： v3.3.0</li>
+        <li>·</li>
+        <li><a href="https://github.com/twbs/bootstrap">GitHub 仓库</a></li>
+        <li>·</li>
+        <li><a href="../getting-started/#examples">实例精选</a></li>
+        <li>·</li>
+        <li><a href="http://v2.bootcss.com/">v2.3.2 中文文档</a></li>
+        <li>·</li>
+        <li><a href="../about/">关于</a></li>
+        <li>·</li>
+        <li><a href="http://expo.bootcss.com">优站精选</a></li>
+        <li>·</li>
+        <li><a href="http://blog.getbootstrap.com">官方博客</a></li>
+        <li>·</li>
+        <li><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
+        <li>·</li>
+        <li><a href="https://github.com/twbs/bootstrap/releases">历史版本</a></li>
+      </ul>
+    </div>
+  </footer>
+
 </body>
 </html>
