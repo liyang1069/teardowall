@@ -26,8 +26,70 @@
   display: inline-block; margin: 0 5px 5px 0; padding: 0px 10px; background-color: #aab5c3; -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px;color: #fff; text-decoration: none;
 }
 .common-icon{
-  height: 60px;
+  height: 70px;
+  padding: 10px 0;
+  width: 100%;
 }
 .web-content{
   background-color: #ededed;
+}
+.site-header .search:focus {
+  border-color:#4c575f;
+  /*box-shadow: 0px 2px 0 0 #208d4e;*/
+  /*box-shadow: 2px 2px 3px #aaaaaa*/
+}
+.common-svg {
+  float: left;
+  text-indent: -9999px;
+  height: 50px;
+  margin-right:10px;
+  background-size:contain;
+}
+.common-163 {
+  background: url('../images/common/163_common.svg') no-repeat 0 0;
+}
+.common-12306 {
+  background: url('../images/common/12306_common.svg') no-repeat 0 0;
+}
+.common-facebook {
+  background: url('../images/common/facebook_common.svg') no-repeat 0 0;
+}
+.common-github {
+  background: url('../images/common/github_common.svg') no-repeat 0 0;
+}
+.common-twitter {
+  background: url('../images/common/twitter_common.svg') no-repeat 0 0;
+}
+.common-weibo {
+  background: url('../images/common/weibo_common.svg') no-repeat 0 0;
+}
+.common-zhihu {
+  background: url('../images/common/zhihu_common.svg') no-repeat 0 0;
+}
+.common-tumblr {
+  background: url('../images/common/tumblr_common.svg') no-repeat 0 0;
+}
+.press-163 {
+  background: url('../images/press/163_press.svg') no-repeat 0 0;
+}
+.press-12306 {
+  background: url('../images/press/12306_press.svg') no-repeat 0 0;
+}
+.press-facebook {
+  background: url('../images/press/facebook_press.svg') no-repeat 0 0;
+}
+.press-github {
+  background: url('../images/press/github_press.svg') no-repeat 0 0;
+}
+.press-twitter {
+  background: url('../images/press/twitter_press.svg') no-repeat 0 0;
+}
+.press-weibo {
+  background: url('../images/press/weibo_press.svg') no-repeat 0 0;
+}
+.press-zhihu {
+  background: url('../images/press/zhihu_press.svg') no-repeat 0 0;
+}
+.press-tumblr {
+  background: url('../images/press/tumblr_press.svg') no-repeat 0 0;
 }
