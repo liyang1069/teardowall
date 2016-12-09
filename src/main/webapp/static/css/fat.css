@@ -16,6 +16,25 @@
 .padding-bottom-30{
   padding-bottom: 30px;
 }
+.margin-top-50 {
+  margin-top: 50px;
+}
+.margin-right-10{
+  margin-right: 10px;
+}
+.border-solid-1{
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 1px 1px;
+  border-top: 1px solid #ddd !important;
+}
+.no-horizontal-padding{
+  padding-left: 0;
+  padding-right: 0;
+}
+.center-align{
+  text-align: center;
+}
 .sem-div{
   margin-top: -20px;
   padding-bottom: 10px;
