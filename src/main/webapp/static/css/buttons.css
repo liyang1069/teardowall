@@ -1107,6 +1107,7 @@
 * Create colors for glowing buttons
 */
 .button-glow.button-primary {
+  border-radius: 20px;
   -webkit-animation-name: glowing-primary;
           animation-name: glowing-primary; }
 .button-glow.button-plain {
