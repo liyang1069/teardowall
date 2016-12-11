@@ -13,6 +13,9 @@
 .padding-top-30{
   padding-top: 30px;
 }
+.padding-top-50{
+  padding-top: 50px;
+}
 .padding-bottom-30{
   padding-bottom: 30px;
 }
@@ -41,6 +44,9 @@
   /*height: 320px;*/
   background-color: #4c575f;
 }
+.sem-row{
+  padding: 30px 0;
+}
 .a-border{
   display: inline-block; margin: 0 5px 5px 0; padding: 0px 10px; background-color: #aab5c3; -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px;color: #fff; text-decoration: none;
 }
@@ -61,6 +67,7 @@
   float: left;
   text-indent: -9999px;
   height: 50px;
+  width: 50px;
   margin-right:10px;
   background-size:contain;
 }
