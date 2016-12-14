@@ -467,7 +467,7 @@
   .button-border.button-primary, .button-primary.button-border-thin, .button-primary.button-border-thick,
   .button-border-thin.button-primary,
   .button-border-thick.button-primary {
-    color: #1B9AF7; }/*2d353a*/
+    color: #2d353a; }/*1B9AF7*/
     .button-border.button-primary:hover, .button-primary.button-border-thin:hover, .button-primary.button-border-thick:hover, .button-border.button-primary:focus, .button-primary.button-border-thin:focus, .button-primary.button-border-thick:focus,
     .button-border-thin.button-primary:hover,
     .button-border-thin.button-primary:focus,
@@ -924,8 +924,8 @@
     -webkit-box-shadow: 0 0 0 rgba(44, 154, 219, 0.3);
             box-shadow: 0 0 0 rgba(44, 154, 219, 0.3); }
   50% {
-    -webkit-box-shadow: 0 0 20px rgba(44, 154, 219, 0.8);
-            box-shadow: 0 0 20px rgba(44, 154, 219, 0.8); }
+    /*-webkit-box-shadow: 0 0 20px rgba(44, 154, 219, 0.8);
+            box-shadow: 0 0 20px rgba(44, 154, 219, 0.8);*/ }
   to {
     -webkit-box-shadow: 0 0 0 rgba(44, 154, 219, 0.3);
             box-shadow: 0 0 0 rgba(44, 154, 219, 0.3); } }
@@ -934,8 +934,8 @@
     -webkit-box-shadow: 0 0 0 rgba(44, 154, 219, 0.3);
             box-shadow: 0 0 0 rgba(44, 154, 219, 0.3); }
   50% {
-    -webkit-box-shadow: 0 0 20px rgba(44, 154, 219, 0.8);
-            box-shadow: 0 0 20px rgba(44, 154, 219, 0.8); }
+    /*-webkit-box-shadow: 0 0 20px rgba(44, 154, 219, 0.8);
+            box-shadow: 0 0 20px rgba(44, 154, 219, 0.8);*/ }
   to {
     -webkit-box-shadow: 0 0 0 rgba(44, 154, 219, 0.3);
             box-shadow: 0 0 0 rgba(44, 154, 219, 0.3); } }
@@ -958,8 +958,8 @@
     -webkit-box-shadow: 0 0 0 rgba(27, 154, 247, 0.3);
             box-shadow: 0 0 0 rgba(27, 154, 247, 0.3); }
   50% {
-    -webkit-box-shadow: 0 0 20px rgba(27, 154, 247, 0.8);
-            box-shadow: 0 0 20px rgba(27, 154, 247, 0.8); }
+    /*-webkit-box-shadow: 0 0 20px rgba(27, 154, 247, 0.8);
+            box-shadow: 0 0 20px rgba(27, 154, 247, 0.8);*/ }
   to {
     -webkit-box-shadow: 0 0 0 rgba(27, 154, 247, 0.3);
             box-shadow: 0 0 0 rgba(27, 154, 247, 0.3); } }
@@ -1108,6 +1108,7 @@
 */
 .button-glow.button-primary {
   border-radius: 20px;
+  border-color: #2a253a;
   -webkit-animation-name: glowing-primary;
           animation-name: glowing-primary; }
 .button-glow.button-plain {
