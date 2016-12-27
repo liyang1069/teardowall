@@ -53,6 +53,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.16</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.octo.captcha</groupId>
 			<artifactId>jcaptcha-api</artifactId>
 			<version>1.0</version>
@@ -94,7 +100,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>1.5.6</version>
+      <version>1.7.8</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
@@ -141,6 +147,12 @@
       <artifactId>standard</artifactId>
       <version>1.1.2</version>
     </dependency>
+	<dependency>
+		<groupId>opensymphony</groupId>
+		<artifactId>sitemesh</artifactId>
+		<version>${sitemesh.version}</version>
+		<scope>runtime</scope>
+	</dependency>
     <dependency>
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>
@@ -197,6 +209,22 @@
       <artifactId>spring-test</artifactId>
       <version>4.1.7.RELEASE</version>
     </dependency>
+    
+    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-jobs</artifactId>
+			<version>${quartz.version}</version>
+		</dependency>
 
     <!--引入一些工具类-->
     <dependency>

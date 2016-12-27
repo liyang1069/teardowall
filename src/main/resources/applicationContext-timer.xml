@@ -15,7 +15,7 @@
 	<description>定时器</description>
 	<beans>
 		<!-- 定时任务 START -->
-		<bean id="emailRetryTaskObject" class="com.asgab.task.EmailRetryTask" />
+		<bean id="emailRetryTaskObject" class="com.teardowall.task.JokeGetter" />
 
 		<bean id="emailRetryTaskObjDetail"
 			class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
