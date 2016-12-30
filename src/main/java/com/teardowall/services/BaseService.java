@@ -6,5 +6,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @Transactional
 public class BaseService {
-
+	
 }

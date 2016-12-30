@@ -122,3 +122,13 @@
 .press-tumblr {
   background: url('../images/press/tumblr_press.svg') no-repeat 0 0;
 }
+.fat-footer {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+.web-groups{
+  padding-bottom: 30px;
+  background-color: #ededed;
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.teardowall.mapper.WebSiteMapper">
+
+	<resultMap id="webSiteMap" type="com.teardowall.models.WebSite">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="web_url" property="webUrl"/>
+		<result column="icon_path" property="iconPath"/>
+		<result column="is_default" property="isDefault"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="updated_at" property="updatedAt"/>
+	</resultMap>
+	
+	<sql id="webSiteColums">
+		name, web_url, icon_path, is_default, created_at, updated_at
+	</sql>
+	
+	<select id="getTest" parameterType="int" resultType="int">
+		SELECT num FROM test_table where id=#{id}
+	</select>
+	
+	<insert id="insertIconBatch" parameterType="java.util.List">
+		insert into icons (path, name, keyword, size) values
+		<foreach collection="list" item="item" separator=",">
+		(#{item.getPath()}, #{item.getName()}, #{item.getKeyword()}, #{item.getSize()/1024})
+		</foreach>
+	</insert>
+	
+	<insert id="insertIcon" parameterType="com.teardowall.models.Icon">
+		insert into icons (path, name, keyword, size) values
+		
+		(#{path}, #{name}, #{keyword}, #{size})
+	</insert>
+	
+	<insert id="insertWeb" parameterType="com.teardowall.models.WebSite">
+		insert into web_sites (name, web_url, icon_path, is_default, created_at, updated_at) values
+		
+		(#{name}, #{webUrl}, #{iconPath}, #{isDefault}, #{createdAt}, #{updatedAt})
+	</insert>
+	
+	<select id="getSitesByGroupId" parameterType="string" resultMap="webSiteMap">
+		select id, <include refid="webSiteColums"/> FROM teardowall.web_sites ws where ws.id in (select gs.web_site_id from teardowall.groups_sites gs where gs.web_group_id = #{groupId})
+	</select>
+
+</mapper> 

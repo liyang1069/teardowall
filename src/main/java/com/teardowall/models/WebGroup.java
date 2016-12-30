@@ -3,7 +3,18 @@ package com.teardowall.models;
 public class WebGroup extends BaseModel {
 	private String name;
 	private String userId;
+	private int isDefault;
 	
+	public WebGroup(){
+		
+	}
+	
+	public int getIsDefault() {
+		return isDefault;
+	}
+	public void setIsDefault(int isDefault) {
+		this.isDefault = isDefault;
+	}
 	public String getName() {
 		return name;
 	}
