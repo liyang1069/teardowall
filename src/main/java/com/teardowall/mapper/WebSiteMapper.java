@@ -12,5 +12,5 @@ public interface WebSiteMapper {
 	void insertIconBatch(List<Icon> list);
 	void insertIcon(Icon icon);
 	void insertWeb(WebSite site);
-	WebSite[] getSitesByGroupId(String groupId);
+	List<WebSite> getSitesByGroupId(String groupId);
 }

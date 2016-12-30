@@ -5,15 +5,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
-<html>
-  <body>
+
     <td class="col-md-3 center-align border-solid-1">
-      <a href="http://www.sina.com/" target="_blank">
-        <span class="margin-right-10"><img src="${ctx}/static/images/custom/default.png"></span>
-        <span>腾讯新闻</span>
+      <a href="${site.webUrl}" target="_blank">
+        <span class="margin-right-10"><img class="content-img" src="${ctx}${site.iconPath}"></span>
+        <span>${site.name}</span>
       </a>
     </td>
-  </body>
-</html>

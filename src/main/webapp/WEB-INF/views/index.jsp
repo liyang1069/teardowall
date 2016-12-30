@@ -1,4 +1,6 @@
 <%@page import="java.util.List"%>
+<%@page import="com.teardowall.models.WebGroup"%>
+<%@page import="com.teardowall.models.WebSite" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -86,8 +88,11 @@
 
   <div class="web-groups">
     <div class="container bs-docs-container web-content">
-      <jsp:include page="webGroups/oneGroup.jsp" flush="true"/>
-      <jsp:include page="webGroups/oneGroup.jsp" flush="true"/>
+      <c:forEach items="${ groups}" var="group" varStatus="status">
+        <c:set var="ws" value="${ sites.get(status.index) }"></c:set>
+        <%@include file="webGroups/oneGroup.jsp" %>
+      </c:forEach>
+      
     </div>
   </div>
 

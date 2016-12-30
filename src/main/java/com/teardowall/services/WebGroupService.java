@@ -26,16 +26,41 @@ public class WebGroupService extends BaseService {
 	@Resource
 	private WebSiteMapper webSiteMapper;
 	
-	public Map<WebGroup, WebSite[]> getDefaultGroups(){
+	public List<WebGroup> getDefaultGroups(){
 		//WebGroup[] groups = webGroupMapper.getDefaultGroups();
 		List<WebGroup> groups = webGroupMapper.getDefaultGroups();
 		//List<Map<WebGroup, WebSite[]>> list = new ArrayList<Map<WebGroup, WebSite[]>>();
-		Map<WebGroup, WebSite[]> hash = new HashMap<>();
+		//Map<WebGroup, WebSite[]> hash = new HashMap<>();
+		return groups;
+		//return hash;
+	}
+	
+	public List<List<WebSite>> getSitesByGroups(List<WebGroup> groups){
+		List<List<WebSite>> sites = new ArrayList<>();
 		for(Iterator<WebGroup> it = groups.iterator(); it.hasNext();){
 			WebGroup group = it.next();
-			WebSite[] sites = webSiteMapper.getSitesByGroupId(group.getId());
-			hash.put(group, sites);
+			List<WebSite> ws = webSiteMapper.getSitesByGroupId(group.getId());
+			int addNum = 0;
+			if(ws.size() < 4){
+				addNum = 4 - ws.size();
+			}
+			else if(ws.size() < 8){
+				addNum = 8 - ws.size();
+			}
+			for(int i = 0; i < addNum; i++){
+				ws.add(getNullSite());
+			}
+			sites.add(ws);
 		}
-		return hash;
+		return sites;
+	}
+	
+	private WebSite getNullSite(){
+		WebSite site = new WebSite();
+		site.setId("0");
+		site.setName("");
+		site.setIconPath("");
+		site.setWebUrl("");
+		return site;
 	}
 }
