@@ -20,9 +20,9 @@ public class MailConfig {
 	  // 发件人邮箱用户名
 	  private static String username = "teardowall";
 	  // 发件人邮箱密码
-	  private static String password = "wocaoniubia";
+	  private static String password = "sduept7";// "wocaoniubia";
 	  // 发件人显示昵称
-	  private static String nickname = "nowall";
+	  private static String nickname = "teardowall";
 
 	  static {
 	    // 类初始化后加载配置文件

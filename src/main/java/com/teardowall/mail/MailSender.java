@@ -234,8 +234,8 @@ public class MailSender {
 	    mimeMsg.setContent(multipart);
 	    mimeMsg.saveChanges();
 	    Session session = Session.getInstance(props, null);
-	    Transport transport = session.getTransport("smtp");
-	    transport.connect("smtp.gmail.com", username, password);
+	    Transport transport = session.getTransport();
+	    transport.connect(username, password);
 	    System.out.println("Transport: " + transport.toString());
 	    transport.sendMessage(mimeMsg, mimeMsg.getAllRecipients());
 	    transport.close();
