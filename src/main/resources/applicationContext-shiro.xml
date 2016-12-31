@@ -78,7 +78,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/base* = anon
-				/account* = anon
+				/account/** = anon
 				/web_group/default = anon
 				/jcaptcha* = anon
 				/base = jCaptchaValidate

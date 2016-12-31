@@ -31,6 +31,9 @@ public class AccountService {
 
   private static Logger logger = LoggerFactory.getLogger(AccountService.class);
 
-  
+  public User findUserByEmail(String email) {
+	  User user = null;
+	  return user;
+  }
 
 }

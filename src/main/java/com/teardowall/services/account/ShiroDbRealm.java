@@ -41,7 +41,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
   @Override
   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
     UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-    User user = null;//;accountService.findUserByLoginName(token.getUsername());
+    User user = accountService.findUserByEmail(token.getUsername());
 
     if (user == null) {
       throw new UnknownAccountException();// 没找到帐号
