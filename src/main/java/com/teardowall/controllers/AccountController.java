@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/account")
 public class AccountController extends BaseController {
 	
-	@RequestMapping(value = "/sign_up", method = RequestMethod.GET)
-	public String signUp() {
-		
-		return "";
+	@RequestMapping(value = "/signin", method = RequestMethod.POST)
+	public void signin(){
+		System.out.println("============signin===========");
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public void signup(){
+		System.out.println("============signup===========");
 	}
 }

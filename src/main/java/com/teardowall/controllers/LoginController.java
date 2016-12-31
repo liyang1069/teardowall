@@ -29,6 +29,11 @@ public class LoginController extends BaseController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String login(Model model) {
 		System.out.println("GGGGGGGGGGGGGGGGG");
+		
+		return "account/signin";
+	}
+	
+	private void loginOld(Model model){
 		//System.out.println(webSiteService.getTest(1));
 		//webSiteService.saveDefaultSites();
 		List<WebGroup> groups = webGroupService.getDefaultGroups();
@@ -37,6 +42,5 @@ public class LoginController extends BaseController {
 		model.addAttribute("sites", sites);
 		//WebGroup www = hash.keySet().toArray()[0];
 		System.out.println(groups.size());
-		return "content";
 	}
 }
