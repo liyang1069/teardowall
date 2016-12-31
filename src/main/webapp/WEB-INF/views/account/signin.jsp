@@ -114,12 +114,12 @@
         </div>
         <div class="email input-wrapper">
 
-        <input required="" type="text" class="account" name="phone_num" aria-label="邮箱" placeholder="邮箱">
+        <input required="" type="text" class="account" name="email_up" aria-label="邮箱" placeholder="邮箱">
 
         </div>
 
         <div class="input-wrapper">
-        <input required="" type="password" name="password" aria-label="密码" placeholder="密码（不少于 6 位）" autocomplete="off">
+        <input required="" type="password" name="password_up" aria-label="密码" placeholder="密码（不少于 6 位）" autocomplete="off">
         </div>
 
         <div class="Captcha input-wrapper" data-type="cn" data-za-module="Captcha">
@@ -149,7 +149,7 @@
     <div class="container">
       <p>
         Designed and built with all the love in the world by 
-        <a href="https://twitter.com/mdo" target="_blank">@Jackson</a>
+        <a href="mailto:teardowall@163.com" target="_blank">@Jackson</a>
          and 
         <a href="https://twitter.com/Jerry1069li" target="_blank">@Jerry</a>.
       </p>

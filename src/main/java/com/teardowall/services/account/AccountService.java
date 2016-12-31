@@ -1,11 +1,17 @@
 package com.teardowall.services.account;
 
 
+import java.io.IOException;
+import java.util.Date;
+
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.teardowall.common.Common;
+import com.teardowall.mail.MailHelper;
 import com.teardowall.mapper.UserMapper;
 import com.teardowall.models.User;
 import com.teardowall.services.BaseService;
@@ -33,6 +39,23 @@ public class AccountService extends BaseService {
   public User findUserByEmail(String email) {
 	  User user = userMapper.findUserByEmail(email);
 	  return user;
+  }
+  
+  public void addUser(String name,String email,String password){
+	  User user = new User();
+	  user.setName(name);
+	  user.setNickName(name);
+	  user.setEmail(email);
+	  user.setEmailActive(0);
+	  user.setPassword(Common.encrypyPasswd(password));
+	  Date date = new Date();
+	  user.setCreatedAt(date);
+	  user.setUpdatedAt(date);
+	  userMapper.addUser(user);
+  }
+  
+  public void sendAuthenEmail(User user) throws IOException, MessagingException{
+	  MailHelper.sendMail(user.getEmail(), user.getNickName() + ",欢迎使用Teardowall，请验证邮箱", "请验证邮箱");
   }
 
 }

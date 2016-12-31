@@ -6,4 +6,5 @@ import com.teardowall.models.User;
 @TearMapper
 public interface UserMapper {
 	User findUserByEmail(String email);
+	void addUser(User user);
 }

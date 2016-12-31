@@ -2,6 +2,8 @@ package com.teardowall.common;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Common {
 	public static String icon_path_relative = "/static/icon/";
@@ -39,4 +41,19 @@ public class Common {
         }
         return hs.toUpperCase();
     }
+	
+	public static boolean verifyEmail(String email){
+	      String pattern = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
+	 
+	      // 创建 Pattern 对象
+	      Pattern r = Pattern.compile(pattern);
+	 
+	      // 现在创建 matcher 对象
+	      Matcher m = r.matcher(email);
+	      if (m.find( )) {
+	         return true;
+	      } else {
+	         return false;
+	      }
+		}
 }

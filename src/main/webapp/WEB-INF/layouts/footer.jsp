@@ -3,7 +3,7 @@
   <div class="container">
     <p>
       Designed and built with all the love in the world by 
-      <a href="https://twitter.com/mdo" target="_blank">@Jackson</a>
+      <a href="mailto:teardowall@163.com" target="_blank">@Jackson</a>
        and 
       <a href="https://twitter.com/Jerry1069li" target="_blank">@Jerry</a>.
     </p>

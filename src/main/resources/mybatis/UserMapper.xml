@@ -24,4 +24,8 @@
 		select id, <include refid="userColumns"/> from users where email = #{email}
 	</select>
 	
+	<insert id="addUser" parameterType="com.teardowall.models.User">
+		insert into users (<include refid="userColumns"/>) values (#{name}, #{email}, #{emailActive}, #{nickName}, #{phoneNumber}, #{password}, #{createdAt}, #{updatedAt})
+	</insert>
+	
 </mapper>
