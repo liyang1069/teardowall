@@ -1,8 +1,6 @@
 package com.teardowall.controllers;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -17,8 +15,8 @@ import com.teardowall.services.WebGroupService;
 import com.teardowall.services.WebSiteService;
 
 @Controller
-@RequestMapping(value = "/login")
-public class LoginController extends BaseController {
+@RequestMapping(value = "/web_group")
+public class WebGroupController extends BaseController {
 	
 	@Resource
 	private WebSiteService webSiteService;
@@ -26,17 +24,14 @@ public class LoginController extends BaseController {
 	@Resource
 	private WebGroupService webGroupService;
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public String login(Model model) {
-		System.out.println("GGGGGGGGGGGGGGGGG");
-		//System.out.println(webSiteService.getTest(1));
-		//webSiteService.saveDefaultSites();
+	@RequestMapping(value = "/default", method = RequestMethod.GET)
+	public String defaultPage(Model model){
+		System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+		System.out.println("NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
 		List<WebGroup> groups = webGroupService.getDefaultGroups();
 		List<List<WebSite>> sites = webGroupService.getSitesByGroups(groups);
 		model.addAttribute("groups", groups);
 		model.addAttribute("sites", sites);
-		//WebGroup www = hash.keySet().toArray()[0];
-		System.out.println(groups.size());
-		return "content";
+		return "index";
 	}
 }

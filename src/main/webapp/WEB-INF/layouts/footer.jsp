@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
-<footer class="bs-docs-footer" role="contentinfo">
+<footer class="bs-docs-footer fat-footer" role="contentinfo">
   <div class="container">
     <p>
       Designed and built with all the love in the world by 
