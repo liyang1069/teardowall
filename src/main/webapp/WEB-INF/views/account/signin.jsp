@@ -54,12 +54,12 @@
 
 
       <div class="view view-signin" data-za-module="SignInForm">
-        <form method="POST" novalidate="novalidate" action="${ctx}/account/signin">
+        <form method="POST" novalidate="novalidate" action="${ctx}/login">
           <div class="group-inputs">
 
-            <div class="account input-wrapper">
+            <div class="username input-wrapper">
 
-            <input type="text" name="account" aria-label="邮箱" placeholder="邮箱" required="">
+            <input type="text" name="username" aria-label="邮箱" placeholder="邮箱" required="">
             </div>
             <div class="verification input-wrapper">
             <input type="password" name="password" aria-label="密码" placeholder="密码" required=""><button type="button" class="send-code-button">获取验证码</button>

@@ -20,4 +20,8 @@
 	<select id="getDefaultGroups" resultMap="webGroupMap">
 		select id, <include refid="webGroupColumns"/> from web_groups where is_default = 1
 	</select>
+	
+	<select id="getGroupsByUserId" parameterType="string" resultMap="webGroupMap">
+		select id, <include refid="webGroupColumns"/> from web_groups where user_id = #{userId}
+	</select>
 </mapper> 

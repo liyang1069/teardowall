@@ -3,5 +3,25 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
 <mapper namespace="com.teardowall.mapper.UserMapper">
-
+	
+	<resultMap id="userMap" type="com.teardowall.models.User">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<result column="email_active" property="emailActive"/>
+		<result column="nick_name" property="nickName"/>
+		<result column="phone_number" property="phoneNumber"/>
+		<result column="password" property="password"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="updated_at" property="updatedAt"/>
+	</resultMap>
+	
+	<sql id="userColumns">
+		name, email, email_active, nick_name, phone_number, password, created_at, updated_at
+	</sql>
+	
+	<select id="findUserByEmail" parameterType="string" resultMap="userMap">
+		select id, <include refid="userColumns"/> from users where email = #{email}
+	</select>
+	
 </mapper>

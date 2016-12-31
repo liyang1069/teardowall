@@ -6,7 +6,14 @@ public class User extends BaseModel {
 	private int emailActive;
 	private String nickName;
 	private String phoneNumber;
+	private String password;
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getName() {
 		return name;
 	}

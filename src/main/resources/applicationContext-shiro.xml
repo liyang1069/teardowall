@@ -79,6 +79,8 @@
 			<value>
 				/base* = anon
 				/account/** = anon
+				/login/signup = anon
+				/login/** = anon
 				/web_group/default = anon
 				/jcaptcha* = anon
 				/base = jCaptchaValidate

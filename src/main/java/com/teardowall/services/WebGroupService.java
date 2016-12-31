@@ -26,6 +26,14 @@ public class WebGroupService extends BaseService {
 	@Resource
 	private WebSiteMapper webSiteMapper;
 	
+	public List<WebGroup> getGroupsByUserId(String userId){
+		List<WebGroup> groups = webGroupMapper.getGroupsByUserId(userId);
+		if(groups == null || groups.size() == 0){
+			groups = getDefaultGroups();
+		}
+		return groups;
+	}
+	
 	public List<WebGroup> getDefaultGroups(){
 		//WebGroup[] groups = webGroupMapper.getDefaultGroups();
 		List<WebGroup> groups = webGroupMapper.getDefaultGroups();
