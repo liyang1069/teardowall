@@ -7,7 +7,14 @@ public class User extends BaseModel {
 	private String nickName;
 	private String phoneNumber;
 	private String password;
+	private int salt;
 	
+	public int getSalt() {
+		return salt;
+	}
+	public void setSalt(int salt) {
+		this.salt = salt;
+	}
 	public String getPassword() {
 		return password;
 	}

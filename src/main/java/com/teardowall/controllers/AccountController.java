@@ -31,23 +31,37 @@ public class AccountController extends BaseController {
 	public String signup(@RequestParam String fullname, @RequestParam(value="email_up") String emailUp,
 			@RequestParam(value="password_up") String passwordUp, Model model) throws IOException, MessagingException{
 		System.out.println("============signup===========");
-		if(Common.verifyEmail(emailUp) == false){
-			model.addAttribute("msg", "账户已存在，请使用其他邮箱!");
+		String msg = "";
+		if(emailUp.isEmpty() || fullname.isEmpty() || passwordUp.isEmpty()){
+			msg = "填写信息格式不正确,请重新填写!";
+		}
+		else if(passwordUp.length() < 6 || passwordUp.length() > 16){
+			msg = "密码请控制在6—16位!";
+		}
+		else if(Common.verifyEmail(emailUp) == false){
+			msg = "账户已存在，请使用其他邮箱!";
 		}
 		else if(accountService.findUserByEmail(emailUp) != null){
-			model.addAttribute("msg", "账户已存在，请使用其他邮箱!");
+			msg = "账户已存在，请使用其他邮箱!";
 		}
 		else{
 			accountService.addUser(fullname, emailUp, passwordUp);
 			User user = accountService.findUserByEmail(emailUp);
 			if(user == null || user.getId().equals("0")){
-				model.addAttribute("msg", "账户申请失败，请联系管理员!");
+				msg = "账户申请失败，请联系管理员!";
 			}
 			else{
-				model.addAttribute("msg", "账户申请成功，请登陆邮箱验证!");
+				msg = "账户申请成功，请登陆邮箱验证!";
 				accountService.sendAuthenEmail(user);
 			}
 		}
+		model.addAttribute("msg", msg);
+		return "account/msg";
+	}
+	
+	@RequestMapping(value="/auth_email", method = RequestMethod.GET)
+	public String authEamil(@RequestParam(value="auth_string") String authString, @RequestParam(value="auth_id") String email, Model model){
+		model.addAttribute("msg", accountService.authEamil(email, authString));
 		return "account/msg";
 	}
 }

@@ -7,4 +7,5 @@ import com.teardowall.models.User;
 public interface UserMapper {
 	User findUserByEmail(String email);
 	void addUser(User user);
+	void updateUser(User user);
 }
