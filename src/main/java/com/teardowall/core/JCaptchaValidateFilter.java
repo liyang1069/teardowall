@@ -34,8 +34,7 @@ public class JCaptchaValidateFilter extends AccessControlFilter {
       return true;
     }
     // 3、此时是表单提交，验证验证码是否正确
-    //return JCaptcha.validateResponse(httpServletRequest, httpServletRequest.getParameter(jcaptchaParam));
-    return true;
+    return JCaptcha.validateResponse(httpServletRequest, httpServletRequest.getParameter(jcaptchaParam));
   }
 
   protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
