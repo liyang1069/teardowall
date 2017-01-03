@@ -75,12 +75,12 @@
  	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 	
 	
-	<bean id="multipartResolver"
+	<!-- <bean id="multipartResolver"
 		class="com.teardowall.core.fileupload.CustomMultipartResolver">
 		<property name="defaultEncoding" value="utf-8" />
 		<property name="maxUploadSize" value="10485760000" />
 		<property name="maxInMemorySize" value="40960" />
-	</bean>
+	</bean> -->
 	
 	
 	
