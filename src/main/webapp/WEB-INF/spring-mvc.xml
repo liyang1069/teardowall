@@ -19,10 +19,10 @@
 	</context:component-scan>
 
 	<!-- shiro注解支持 -->
-	<aop:config proxy-target-class="true"/>
+	<!-- <aop:config proxy-target-class="true"/>
 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager" />
-	</bean>
+	</bean> -->
 
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
