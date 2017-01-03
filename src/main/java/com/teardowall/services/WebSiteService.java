@@ -68,11 +68,22 @@ public class WebSiteService extends BaseService {
 		WebSite site = new WebSite();
 		site.setName(oneSite[0]);
 		site.setWebUrl(oneSite[1]);
-		site.setIconPath(Common.icon_path_relative + oneSite[2] + ".png");
+		//site.setIconPath(Common.icon_path_relative + oneSite[2] + ".png");
 		site.setIsDefault(1);
 		Date date = new Date();
 		site.setCreatedAt(date);
 		site.setUpdatedAt(date);
 		return site;
+	}
+	
+	public String iconPathById(String iconId){
+		if(iconId == null || iconId.isEmpty()){
+			return Common.defaultIconPath;
+		}
+		String iconPath = webSiteMapper.iconPathById(iconId);
+		if(iconPath == null || iconPath.isEmpty()){
+			iconPath = Common.defaultIconPath;
+		}
+		return iconPath;
 	}
 }

@@ -3,10 +3,19 @@ package com.teardowall.models;
 public class WebSite extends BaseModel {
 	private String name;
 	private String webUrl;
-	private String iconPath;
+	private String iconId;
 	private int isDefault;
+	private String iconPath;
 //	private String webGroupId;
 	
+	public String getIconPath() {
+		return iconPath;
+	}
+
+	public void setIconPath(String iconPath) {
+		this.iconPath = iconPath;
+	}
+
 	public WebSite(){
 		
 	}
@@ -29,10 +38,10 @@ public class WebSite extends BaseModel {
 	public void setWebUrl(String url) {
 		this.webUrl = url;
 	}
-	public String getIconPath() {
-		return iconPath;
+	public String getIconId() {
+		return iconId;
 	}
-	public void setIconPath(String iconPath) {
-		this.iconPath = iconPath;
+	public void setIconId(String iconId) {
+		this.iconId = iconId;
 	}
 }
