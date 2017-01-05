@@ -49,6 +49,7 @@
 .no-horizontal-padding{
   padding-left: 0;
   padding-right: 0;
+  margin-bottom: 0;
 }
 .center-align{
   text-align: center;

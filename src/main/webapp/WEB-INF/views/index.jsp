@@ -92,7 +92,7 @@
     </div>
   </div>
 
-  <div class="common-icon">
+  <div class="common-icon no_display">
     <p class="col-md-12 ">
       <span class="col-md-1 col-md-offset-2"><a href="http://www.weibo.com/?c=spr_sinamkt_buy_9973dh_weibo_t001" target="_blank" class="common-svg common-weibo "></a></span>
       <span class="col-md-1"><a href="https://www.zhihu.com/" target="_blank" class="common-svg common-zhihu"></a></span>
@@ -103,6 +103,18 @@
       <span class="col-md-1"><a href="https://twitter.com/" target="_blank" class="common-svg common-twitter"></a></span>
       <span class="col-md-1"><a href="https://www.tumblr.com/" target="_blank" class="common-svg common-tumblr"></a></span>
     </p>
+  </div>
+  <div class="mostused-packages well-sm text-center hidden-xs hidden-sm">
+    <ul class="list-inline">
+      <li><a href="http://www.weibo.com/?c=spr_sinamkt_buy_9973dh_weibo_t001" target="_blank" class="common-svg common-weibo "></a></li>
+      <li><a href="https://www.zhihu.com/" target="_blank" class="common-svg common-zhihu"></a></li>
+      <li><a href="http://email.163.com/" target="_blank" class="common-svg common-163"></a></li>
+      <li><a href="http://www.12306.cn/mormhweb/" target="_blank" class="common-svg common-12306"></a></li>
+      <li><a href="https://github.com/" target="_blank" class="common-svg common-github"></a></li>
+      <li><a href="https://www.facebook.com/" target="_blank" class="common-svg common-facebook"></a></li>
+      <li><a href="https://twitter.com/" target="_blank" class="common-svg common-twitter"></a></li>
+      <li><a href="https://www.tumblr.com/" target="_blank" class="common-svg common-tumblr"></a></li>
+    </ul>
   </div>
 
   <div class="web-groups">
