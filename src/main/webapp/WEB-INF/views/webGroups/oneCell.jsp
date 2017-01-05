@@ -14,6 +14,6 @@
         		<img class="content-img" src="${ctx}${site.iconPath}">
         	</c:if>
         </span>
-        <span>${site.name}</span>
+        <span class="site-label">${site.name}</span>
       </a>
     </td>

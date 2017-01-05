@@ -81,7 +81,7 @@
               <input type="hidden" value="QBRE" name="form">
           </form>
         </div>
-        <div class="col-md-12 padding-top-50">
+        <div class="col-md-12 padding-top-20">
           <p class="">
             <a href="javascript:void(0)" class="button button-glow button-border button-rounded button-primary col-md-offset-2 col-md-2"  id="google_btn">Google</a>
             <a href="javascript:void(0)" class="button button-glow button-border button-rounded button-primary col-md-offset-1 col-md-2"  id="baidu_btn">Baidu</a>
