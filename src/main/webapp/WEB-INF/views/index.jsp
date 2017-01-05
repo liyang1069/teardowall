@@ -34,18 +34,21 @@
       <a href="#" class="col-md-1 navbar-brand" target="_blank">TEARDOWALL</a>
       <label class="col-md-1 col-md-offset-9"></label>
       <!-- Single button -->
+      
       <div class="btn-group margin-top-15">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-        ${username}<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" style="min-width: 0;">
-          <li><a href="${ctx}/login" target="_blank">登录</a></li>
+		<a href="javascript:;" class="dropdown-toggle font-17" id=":0" role="button" aria-haspopup="true" aria-activedescendant="" data-toggle="dropdown" aria-expanded="false">
+			<img alt="" src="${ctx}/static/images/custom/config.svg" style="width: 20px;height: 20px;">
+			<span class="name">${username}</span>
+		</a>
+		<ul class="dropdown-menu" id="top-nav-profile-dropdown" aria-labelledby=":0">
+		  <li><a href="${ctx}/login" target="_blank">登录</a></li>
           <li class="divider"></li>
           <li><a href="${ctx}/account/logout" target="_blank">登出</a></li>
           <li class="divider"></li>
           <li><a href="${ctx}/web_group/add_group" target="_blank">增加网站组合</a></li>
-        </ul>
-      </div>
+		</ul>
+		
+	  </div>
     </div>
   </header>
   
@@ -53,14 +56,16 @@
     <div class="container">
       <div class="row sem-row">
         <div class="col-md-12" id="google_div">
-          <h1 id="google_h1" class="padding-bottom-30">Google</h1>
+          <!-- <h1 id="google_h1" class="padding-bottom-30">Google</h1> -->
+          <img src="/csa/static/images/logo/google_logo.svg" class="sem-svg">
           <form action="http://www.google.com/search" target="_blank">
             <input name="ie" value="UTF-8" type="hidden" />
             <input type="text" class="form-control search clearable" name="q" size="30">
           </form>
         </div>
         <div class="col-md-12 hide" id="baidu_div">
-          <h1 id="baidu_h1" class="padding-bottom-30">Baidu</h1>
+          <!-- <h1 id="baidu_h1" class="padding-bottom-30">Baidu</h1> -->
+          <img src="/csa/static/images/logo/baidu_logo.svg" class="sem-svg">
           <form onsubmit="return baidu_with_https(this)" action="http://www.baidu.com/baidu" target="_blank">
             <input name="tn" type="hidden" value="SE_zzsearchcode_shhzc78w">
             <input type="text" class="form-control search clearable" onfocus="checkHttps" name="word" size="30" baiduSug="1" id="baidu_input">
@@ -68,7 +73,8 @@
           </form>
         </div>
         <div class="col-md-12 hide" id="bing_div">
-          <h1 id="bing_h1" class="padding-bottom-30">Bing</h1>
+          <!-- <h1 id="bing_h1" class="padding-bottom-30">Bing</h1> -->
+          <img src="/csa/static/images/logo/bing_logo.svg" class="sem-svg">
           <form action="http://cn.bing.com/search" target="_blank" id="sb_form">
               <input class="b_searchbox form-control search clearable" id="sb_form_q" name="q" title="输入搜索词" type="search" value="" maxlength="100" onfocus="_ge('b_header').className='b_focus';" dir="" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
               <input id="sa_qs" name="qs" value="bs" type="hidden">

@@ -159,3 +159,10 @@
 .vertical-padding-3 {
   padding: 3px 0;
 }
+.font-17 {
+  font-size: 17px;
+}
+.sem-svg {
+  height: 200px;
+  margin-top: -50px;
+}
