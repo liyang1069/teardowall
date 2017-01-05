@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,15 +44,14 @@ public class LoginController extends BaseController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String doLogin(@RequestParam String username, @RequestParam String password, Model model) {
+	public String doLogin(@RequestParam String username, @RequestParam String password,HttpServletRequest request, Model model) {
 		System.out.println("DDDDDDDDDDDDDDDDD");
 		User user = accountService.findUserByEmail(username);
 		if(user.getPassword().equals(Common.encrypyPasswd(password)) && user.getEmailActive() == 1){
-			List<WebGroup> groups = webGroupService.getGroupsByUserId(user.getId());
-			List<List<WebSite>> sites = webGroupService.getSitesByGroups(groups);
-			model.addAttribute("groups", groups);
-			model.addAttribute("sites", sites);
-			return "index";
+			HttpSession session = request.getSession();
+			session.setAttribute("username", user.getNickName());
+			session.setAttribute("userId", user.getId());
+			return "redirect:/web_group/index";
 		}
 		else{
 			return "account/signin";

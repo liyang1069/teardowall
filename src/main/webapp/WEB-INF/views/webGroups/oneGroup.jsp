@@ -12,7 +12,9 @@
     <div class="row margin-top-50">
       <div class="panel panel-default col-md-offset-1 col-md-10 no-horizontal-padding">
         <!-- Default panel contents -->
-        <div class="panel-heading col-md-12">${ group.name }</div>
+        <div class="panel-heading col-md-12">
+        	<a target="_blank" class="black-a" href="${ ctx}/web_group/${group.id}/web_config">${ group.name }</a>
+        </div>
 
         <!-- Table -->
         <table class="table col-md-12">

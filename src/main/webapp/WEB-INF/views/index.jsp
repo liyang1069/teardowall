@@ -32,7 +32,20 @@
   <header class="navbar navbar-static-top bs-docs-nav top-header" id="top" role="banner">
     <div class="container">
       <a href="#" class="col-md-1 navbar-brand" target="_blank">TEARDOWALL</a>
-      <label class="col-md-1 col-md-offset-7 no_display">Teardowall</label>
+      <label class="col-md-1 col-md-offset-9"></label>
+      <!-- Single button -->
+      <div class="btn-group margin-top-15">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        ${username}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" style="min-width: 0;">
+          <li><a href="${ctx}/login" target="_blank">登录</a></li>
+          <li class="divider"></li>
+          <li><a href="${ctx}/account/logout" target="_blank">登出</a></li>
+          <li class="divider"></li>
+          <li><a href="${ctx}/web_group/add_group" target="_blank">增加网站组合</a></li>
+        </ul>
+      </div>
     </div>
   </header>
   

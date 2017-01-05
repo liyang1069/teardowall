@@ -9,7 +9,11 @@
 
     <td class="col-md-3 center-align border-solid-1">
       <a href="${site.webUrl}" target="_blank">
-        <span class="margin-right-10"><img class="content-img" src="${ctx}${site.iconPath}"></span>
+        <span class="margin-right-10">
+        	<c:if test="${site.iconPath != null && site.iconPath.length() > 0 }">
+        		<img class="content-img" src="${ctx}${site.iconPath}">
+        	</c:if>
+        </span>
         <span>${site.name}</span>
       </a>
     </td>

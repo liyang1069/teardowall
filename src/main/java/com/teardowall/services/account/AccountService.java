@@ -57,28 +57,27 @@ public class AccountService extends BaseService {
   
   public void sendAuthenEmail(User user) throws IOException, MessagingException{
 	  StringBuilder mailBody = new StringBuilder();
-	  mailBody.append("***********************请点击下方链接,验证邮箱************************\n");
+	  mailBody.append("***********************请点击下方链接,验证邮箱************************\n<br/>");
 	  mailBody.append(Common.thisSite);
-	  mailBody.append("csa/account/auth_email?auth_string=");
+	  mailBody.append("/account/auth_email?auth_string=");
 	  mailBody.append(Common.encrypyPasswd(user.getPassword() + user.getSalt()));
 	  mailBody.append("&auth_id=");
 	  mailBody.append(user.getEmail());
 	  MailHelper.sendMail(user.getEmail(), user.getNickName() + ",欢迎使用Teardowall，请验证邮箱", mailBody.toString());
   }
   
-  public String authEamil(String email, String saltPass){
-	  User user = findUserByEmail(email);
+  public int authEamil(User user, String saltPass){
 	  if(user != null && user.getEmailActive() == 1){
-		  return "已经验证,无需重复!";
+		  return 0;
 	  }
 	  else if(user != null && user.getEmailActive() == 0){
 		  if(Common.encrypyPasswd(user.getPassword() + user.getSalt()).equals(saltPass)){
 			  user.setEmailActive(1);
 			  userMapper.updateUser(user);
-			  return "验证成功!";
+			  return 1;
 		  }
 	  }
-	  return "验证失败!";
+	  return 2;
   }
 
 }

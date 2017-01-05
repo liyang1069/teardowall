@@ -28,6 +28,9 @@
 .margin-top-50 {
   margin-top: 50px;
 }
+.margin-top-15 {
+  margin-top: 15px;
+}
 .margin-right-10{
   margin-right: 10px;
 }
@@ -145,4 +148,14 @@
 }
 .sign-body {
   min-height: 500px !important;
+}
+.black-a {
+  color: black;
+}
+.bootstrap-only-with {
+  float: none;
+  padding: 0;
+}
+.vertical-padding-3 {
+  padding: 3px 0;
 }

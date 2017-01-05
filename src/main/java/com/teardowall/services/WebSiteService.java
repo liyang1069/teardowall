@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.teardowall.common.Common;
 import com.teardowall.mapper.WebSiteMapper;
+import com.teardowall.models.GroupsSites;
 import com.teardowall.models.Icon;
 import com.teardowall.models.WebSite;
 
@@ -85,5 +86,28 @@ public class WebSiteService extends BaseService {
 			iconPath = Common.defaultIconPath;
 		}
 		return iconPath;
+	}
+	
+	public WebSite newSite(String name, String iconId, String webUrl, int isDefault){
+		WebSite site = new WebSite();
+		site.setName(name);
+		site.setIconId(iconId);
+		site.setWebUrl(webUrl);
+		site.setIsDefault(isDefault);
+		Date date = new Date();
+		site.setCreatedAt(date);
+		site.setUpdatedAt(date);
+		return site;
+	}
+	
+	public GroupsSites newGroupSite(String groupId, String siteId, int serialNum){
+		GroupsSites gs = new GroupsSites();
+		gs.setWebGroupId(groupId);
+		gs.setWebSiteId(siteId);
+		gs.setSerialNum(serialNum);
+		Date date = new Date();
+		gs.setCreatedAt(date);
+		gs.setUpdatedAt(date);
+		return gs;
 	}
 }

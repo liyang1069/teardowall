@@ -82,6 +82,8 @@
 				/login/signup = anon
 				/login/** = anon
 				/web_group/default = anon
+				/web_group/index = anon
+				/web_group/** = anon
 				/jcaptcha* = anon
 				/base = jCaptchaValidate
 				/logout = logout

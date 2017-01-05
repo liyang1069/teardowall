@@ -35,18 +35,32 @@
 		(#{path}, #{name}, #{keyword}, #{size})
 	</insert>
 	
-	<insert id="insertWeb" parameterType="com.teardowall.models.WebSite">
-		insert into web_sites (name, web_url, icon_path, is_default, created_at, updated_at) values
+	<insert id="insertWeb" useGeneratedKeys="true" keyProperty="id" parameterType="com.teardowall.models.WebSite">
 		
-		(#{name}, #{webUrl}, #{iconPath}, #{isDefault}, #{createdAt}, #{updatedAt})
+		insert into web_sites (name, web_url, icon_id, is_default, created_at, updated_at) values
+		
+		(#{name}, #{webUrl}, #{iconId}, #{isDefault}, #{createdAt}, #{updatedAt})
 	</insert>
 	
 	<select id="getSitesByGroupId" parameterType="string" resultMap="webSiteMap">
-		select id, <include refid="webSiteColums"/> FROM teardowall.web_sites ws where ws.id in (select gs.web_site_id from teardowall.groups_sites gs where gs.web_group_id = #{groupId})
+		select id, <include refid="webSiteColums"/> FROM teardowall.web_sites ws where ws.id in (select gs.web_site_id from teardowall.groups_sites gs where gs.web_group_id = #{groupId} order by serial_num asc)
 	</select>
+	
+	<delete id="deleteSitesByGroupId" parameterType="string">
+		delete FROM teardowall.web_sites where web_sites.is_default = 0 and web_sites.id in (select gs.web_site_id from teardowall.groups_sites gs where gs.web_group_id = #{groupId})
+	</delete>
 	
 	<select id="iconPathById" parameterType="string" resultType="string">
 		SELECT path FROM teardowall.icons where id = #{iconId}
 	</select>
+	
+	<insert id="insertGroupSiteRelation" parameterType="com.teardowall.models.GroupsSites">
+		insert into groups_sites (web_group_id, web_site_id, serial_num, created_at, updated_at) values
+		(#{webGroupId}, #{webSiteId}, #{serialNum}, #{createdAt}, #{updatedAt})
+	</insert>
+	
+	<delete id="deleteGroupSiteRelationByGroupId" parameterType="string">
+		delete from groups_sites where web_group_id = #{groupId}
+	</delete>
 
 </mapper> 

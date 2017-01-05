@@ -493,7 +493,7 @@
 
 
 	<build>
-		<finalName>csa</finalName>
+		<finalName>teardowall</finalName>
 
 		<plugins>
 			<!-- compiler插件, 设定JDK版本 -->

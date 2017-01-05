@@ -10,4 +10,7 @@ public interface WebGroupMapper {
 	//WebGroup[] getDefaultGroups();
 	List<WebGroup> getDefaultGroups();
 	List<WebGroup> getGroupsByUserId(String userId);
+	WebGroup getGroupById(String groupId);
+	long insertGroup(WebGroup group);
+	void updateGroup(WebGroup group);
 }

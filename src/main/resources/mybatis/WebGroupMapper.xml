@@ -24,4 +24,16 @@
 	<select id="getGroupsByUserId" parameterType="string" resultMap="webGroupMap">
 		select id, <include refid="webGroupColumns"/> from web_groups where user_id = #{userId}
 	</select>
+	
+	<select id="getGroupById" parameterType="string" resultMap="webGroupMap">
+		select id, <include refid="webGroupColumns"/> from web_groups where id = #{groupId}
+	</select>
+	
+	<insert id="insertGroup" useGeneratedKeys="true" keyProperty="id" parameterType="com.teardowall.models.WebGroup">
+		insert into web_groups (name, user_id, is_default, created_at, updated_at) values (#{name}, #{userId}, #{isDefault}, #{createdAt}, #{updatedAt})
+	</insert>
+	
+	<update id="updateGroup" parameterType="com.teardowall.models.WebGroup">
+		update web_groups set name=#{name}, user_id=#{userId}, is_default=#{isDefault}, created_at=#{createdAt}, updated_at=#{updatedAt} where id=#{id}
+	</update>
 </mapper> 
