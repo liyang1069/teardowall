@@ -47,7 +47,7 @@ public class LoginController extends BaseController {
 	public String doLogin(@RequestParam String username, @RequestParam String password,HttpServletRequest request, Model model) {
 		System.out.println("DDDDDDDDDDDDDDDDD");
 		User user = accountService.findUserByEmail(username);
-		if(user.getPassword().equals(Common.encrypyPasswd(password)) && user.getEmailActive() == 1){
+		if(user.getPassword().equals(Common.encrypyPasswd(password + Common.passwdSuffix + user.getSalt())) && user.getEmailActive() == 1){
 			HttpSession session = request.getSession();
 			session.setAttribute("username", user.getNickName());
 			session.setAttribute("userId", user.getId());
