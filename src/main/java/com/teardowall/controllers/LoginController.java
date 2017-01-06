@@ -1,24 +1,22 @@
 package com.teardowall.controllers;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.teardowall.common.Common;
-import com.teardowall.models.User;
-import com.teardowall.models.WebGroup;
-import com.teardowall.models.WebSite;
 import com.teardowall.services.WebGroupService;
 import com.teardowall.services.WebSiteService;
 import com.teardowall.services.account.AccountService;
@@ -46,16 +44,19 @@ public class LoginController extends BaseController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String doLogin(@RequestParam String username, @RequestParam String password,HttpServletRequest request, Model model) {
 		System.out.println("DDDDDDDDDDDDDDDDD");
-		User user = accountService.findUserByEmail(username);
-		if(user.getPassword().equals(Common.encrypyPasswd(password + Common.passwdSuffix + user.getSalt())) && user.getEmailActive() == 1){
-			HttpSession session = request.getSession();
-			session.setAttribute("username", user.getNickName());
-			session.setAttribute("userId", user.getId());
-			return "redirect:/web_group/index";
+		AuthenticationToken token = new UsernamePasswordToken(username, password);
+		Subject currentUser = SecurityUtils.getSubject();
+		try {
+		    currentUser.login(token);
+		} catch (IncorrectCredentialsException ice) {
+		    System.out.println("XXXXXXXXXXXXXXXX");
+		} catch (LockedAccountException lae) {
+		    System.out.println("XXXXXXXXXXXXXXXX");
 		}
-		else{
-			return "account/signin";
+		catch (AuthenticationException ae) {
+		    System.out.println("XXXXXXXXXXXXXXXX");
 		}
+		return "redirect:/web_group/index";
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
@@ -63,14 +64,14 @@ public class LoginController extends BaseController {
 		System.out.println("PPPPPPPPPPPPPPPPPPPPPP");
 	}
 	
-	private void loginOld(Model model){
-		//System.out.println(webSiteService.getTest(1));
-		//webSiteService.saveDefaultSites();
-		List<WebGroup> groups = webGroupService.getDefaultGroups();
-		List<List<WebSite>> sites = webGroupService.getSitesByGroups(groups);
-		model.addAttribute("groups", groups);
-		model.addAttribute("sites", sites);
-		//WebGroup www = hash.keySet().toArray()[0];
-		System.out.println(groups.size());
-	}
+//	private void loginOld(Model model){
+//		//System.out.println(webSiteService.getTest(1));
+//		//webSiteService.saveDefaultSites();
+//		List<WebGroup> groups = webGroupService.getDefaultGroups();
+//		List<List<WebSite>> sites = webGroupService.getSitesByGroups(groups);
+//		model.addAttribute("groups", groups);
+//		model.addAttribute("sites", sites);
+//		//WebGroup www = hash.keySet().toArray()[0];
+//		System.out.println(groups.size());
+//	}
 }
