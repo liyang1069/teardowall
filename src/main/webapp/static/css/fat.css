@@ -73,6 +73,7 @@
 }
 .web-content{
   background-color: #ededed;
+  padding-left: 0;
 }
 .site-header .search:focus {
   border-color:#4c575f;
@@ -171,7 +172,7 @@
 }
 .sem-svg {
   height: 150px;
-  margin-top: -50px;
+  margin-top: -20px;
 }
 a:hover{
 text-decoration:none;
