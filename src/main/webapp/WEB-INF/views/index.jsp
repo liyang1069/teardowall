@@ -41,9 +41,9 @@
 			<span class="name">${username}</span>
 		</a>
 		<ul class="dropdown-menu" id="top-nav-profile-dropdown" aria-labelledby=":0">
-		  <li><a href="${ctx}/login" target="_blank">登录</a></li>
+		  <li><a href="${ctx}/login">登录</a></li>
           <li class="divider"></li>
-          <li><a href="${ctx}/account/logout" target="_blank">登出</a></li>
+          <li><a href="${ctx}/account/logout">登出</a></li>
           <li class="divider"></li>
           <li><a href="${ctx}/web_group/add_group" target="_blank">增加网站组合</a></li>
 		</ul>

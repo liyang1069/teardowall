@@ -40,6 +40,11 @@ public class AccountService extends BaseService {
 	  User user = userMapper.findUserByEmail(email);
 	  return user;
   }
+
+  public User findUserById(String id) {
+	  User user = userMapper.findUserByEmail(id);
+	  return user;
+  }
   
   public void addUser(String name,String email,String password){
 	  User user = new User();

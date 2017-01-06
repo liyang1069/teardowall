@@ -84,7 +84,7 @@
           <div class="signin-misc-wrapper clearfix">
 
             <button type="button" class="signin-switch-button no_display">手机验证码登录</button>
-
+			<label class="red-font">${ msg}</label>
             <a class="unable-login" href="#">无法登录？</a>
           </div>
 
@@ -136,8 +136,9 @@
 
         </div>
         <div class="button-wrapper command">
-        <button class="sign-button submit" type="submit">注册</button>
+        	<button class="sign-button submit" type="submit">注册</button>
         </div>
+        <div class="text-center"><label class="red-font">${ msgSignUp}</label></div>
         </form>
 
         </div>
@@ -172,7 +173,7 @@
     nav_a_click();
   });
   function nav_a_click(){
-    if (window.location.href.match(/page=signup/)) {
+    if (window.location.href.match(/#signup/) || "signup" == "${view}") {
       signup_fun();
     }
     else{

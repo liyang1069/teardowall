@@ -188,3 +188,9 @@ text-decoration:none;
   vertical-align: middle;
   color: #424242;
 }
+.red-font {
+  color: red;
+}
+.text-center {
+  text-align: center;
+}

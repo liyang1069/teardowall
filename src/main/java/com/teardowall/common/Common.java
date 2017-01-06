@@ -14,6 +14,7 @@ public class Common {
 	public static final String thisSite = "http://localhost:8080/csa";
 	//public static final String thisSite = "http://123.57.247.225:8080/teardowall";
 	public static final String defaultIconPath = "/static/images/custom/default.png";
+	public static final String defaultIconId = "780";
 	public static final String passwdSuffix = "suffix";
 	
 	public static String encrypyPasswd(String passwd){

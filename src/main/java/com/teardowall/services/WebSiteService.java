@@ -91,6 +91,9 @@ public class WebSiteService extends BaseService {
 	public WebSite newSite(String name, String iconId, String webUrl, int isDefault){
 		WebSite site = new WebSite();
 		site.setName(name);
+		if(Common.stringIsEmpty(iconId)){
+			iconId = Common.defaultIconId;
+		}
 		site.setIconId(iconId);
 		site.setWebUrl(webUrl);
 		site.setIsDefault(isDefault);

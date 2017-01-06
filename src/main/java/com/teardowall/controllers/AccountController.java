@@ -38,7 +38,7 @@ public class AccountController extends BaseController {
 			@RequestParam(value="password_up") String passwordUp, Model model) throws IOException, MessagingException{
 		System.out.println("============signup===========");
 		String msg = "";
-		if(emailUp.isEmpty() || fullname.isEmpty() || passwordUp.isEmpty()){
+		if(Common.stringIsEmpty(emailUp) || Common.stringIsEmpty(fullname) || Common.stringIsEmpty(passwordUp)){
 			msg = "填写信息格式不正确,请重新填写!";
 		}
 		else if(passwordUp.length() < 6 || passwordUp.length() > 16){
@@ -60,10 +60,15 @@ public class AccountController extends BaseController {
 				msg = "账户申请成功，请登陆邮箱验证!";
 				accountService.sendAuthenEmail(user);
 				webGroupService.addDefaultGroup2NewUser(user.getId());
+				model.addAttribute("msg", msg);
+				return "account/msg";
 			}
 		}
 		model.addAttribute("msg", msg);
 		return "account/msg";
+//		model.addAttribute("msgSignUp", msg);
+//		model.addAttribute("view", "signup");
+//		return "account/signin";
 	}
 	
 	@RequestMapping(value="/auth_email", method = RequestMethod.GET)

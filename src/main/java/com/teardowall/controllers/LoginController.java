@@ -37,8 +37,15 @@ public class LoginController extends BaseController {
 	private AccountService accountService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String login(Model model) {
+	public String login(HttpServletRequest request, Model model) {
 		System.out.println("GGGGGGGGGGGGGGGGG");
+		getSession(request);
+		if(Common.stringIsEmpty(userId) == false){
+			User user = accountService.findUserById(userId);
+			if(user != null && user.getEmailActive() == 1){
+				return "redirect:/web_group/index";
+			}
+		}
 		
 		return "account/signin";
 	}
@@ -46,6 +53,10 @@ public class LoginController extends BaseController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String doLogin(@RequestParam String username, @RequestParam String password,HttpServletRequest request, Model model) {
 		System.out.println("DDDDDDDDDDDDDDDDD");
+		if(Common.stringIsEmpty(username) || Common.stringIsEmpty(password)){
+			model.addAttribute("msg", "请输入完整的用户名和密码!");
+			return "account/signin";
+		}
 		User user = accountService.findUserByEmail(username);
 		if(user.getPassword().equals(Common.encrypyPasswd(password + Common.passwdSuffix + user.getSalt())) && user.getEmailActive() == 1){
 			HttpSession session = request.getSession();
@@ -54,6 +65,12 @@ public class LoginController extends BaseController {
 			return "redirect:/web_group/index";
 		}
 		else{
+			if(user.getEmailActive() != 1){
+				model.addAttribute("msg", "请验证邮箱!");
+			}
+			else{
+				model.addAttribute("msg", "请输入正确的用户名和密码!");
+			}
 			return "account/signin";
 		}
 	}
