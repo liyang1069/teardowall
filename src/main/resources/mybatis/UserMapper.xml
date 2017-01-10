@@ -22,7 +22,11 @@
 	</sql>
 	
 	<select id="findUserByEmail" parameterType="string" resultMap="userMap">
-		select id, <include refid="userColumns"/> from users where email = #{email}
+		select id, <include refid="userColumns"/> from users where email = #{email} limit 1
+	</select>
+	
+	<select id="findUserById" parameterType="string" resultMap="userMap">
+		select id, <include refid="userColumns"/> from users where id = #{id}
 	</select>
 	
 	<insert id="addUser" parameterType="com.teardowall.models.User">

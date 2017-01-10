@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.teardowall.common.Common;
 import com.teardowall.models.WebGroup;
@@ -62,7 +61,7 @@ public class WebGroupController extends BaseController {
 		if(Common.stringIsEmpty(webGroupId)){
 			return "redirect:/web_group/default";
 		}
-		getSession(request);
+		getSession();
 		if(Common.stringIsEmpty(userId)){
 			return "redirect:/login";
 		}
@@ -77,7 +76,7 @@ public class WebGroupController extends BaseController {
 	
 	@RequestMapping(value="/add_group", method = RequestMethod.GET)
 	public String addOneGroup(HttpServletRequest request, Model model){
-		getSession(request);
+		getSession();
 		if(Common.stringIsEmpty(userId)){
 			return "redirect:/login";
 		}
@@ -92,7 +91,7 @@ public class WebGroupController extends BaseController {
 	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(HttpServletRequest request,Model model){
-		getSession(request);
+		getSession();
 		if(Common.stringIsEmpty(userId)){
 			return "redirect:/login";
 		}
@@ -106,7 +105,7 @@ public class WebGroupController extends BaseController {
 	
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public String update(WebConfig webConfig,HttpServletRequest request,Model model){
-		getSession(request);
+		getSession();
 		if(Common.stringIsEmpty(userId)){
 			return "redirect:/login";
 		}

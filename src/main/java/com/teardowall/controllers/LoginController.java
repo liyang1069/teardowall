@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.teardowall.common.Common;
+import com.teardowall.models.User;
 import com.teardowall.services.WebGroupService;
 import com.teardowall.services.WebSiteService;
 import com.teardowall.services.account.AccountService;
@@ -35,8 +36,15 @@ public class LoginController extends BaseController {
 	private AccountService accountService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String login(Model model) {
+	public String login(HttpServletRequest request, Model model) {
 		System.out.println("GGGGGGGGGGGGGGGGG");
+		getSession();
+		if(Common.stringIsEmpty(userId) == false){
+			User user = accountService.findUserById(userId);
+			if(user != null && user.getEmailActive() == 1){
+				return "redirect:/web_group/index";
+			}
+		}
 		
 		return "account/signin";
 	}
@@ -44,17 +52,24 @@ public class LoginController extends BaseController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String doLogin(@RequestParam String username, @RequestParam String password,HttpServletRequest request, Model model) {
 		System.out.println("DDDDDDDDDDDDDDDDD");
-		AuthenticationToken token = new UsernamePasswordToken(username, password);
+		if(Common.stringIsEmpty(username) || Common.stringIsEmpty(password)){
+			model.addAttribute("msg", "请输入完整的用户名和密码!");
+			return "account/signin";
+		}
+		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+		token.setRememberMe(true);
 		Subject currentUser = SecurityUtils.getSubject();
 		try {
 		    currentUser.login(token);
 		} catch (IncorrectCredentialsException ice) {
-		    System.out.println("XXXXXXXXXXXXXXXX");
+			model.addAttribute("msg", "请输入正确的用户名和密码!");
+			return "account/signin";
 		} catch (LockedAccountException lae) {
-		    System.out.println("XXXXXXXXXXXXXXXX");
+			model.addAttribute("msg", "请验证邮箱!");
+			return "account/signin";
 		}
 		catch (AuthenticationException ae) {
-		    System.out.println("XXXXXXXXXXXXXXXX");
+			return "account/signin";
 		}
 		return "redirect:/web_group/index";
 	}

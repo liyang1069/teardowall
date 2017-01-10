@@ -14,13 +14,15 @@ public class Common {
 	public static final String thisSite = "http://localhost:8080/csa";
 	//public static final String thisSite = "http://123.57.247.225:8080/teardowall";
 	public static final String defaultIconPath = "/static/images/custom/default.png";
+	public static final String defaultIconId = "780";
 	public static final String passwdSuffix = "suffix";
+	public static final String encrypyString = "SHA-1";
 	
 	public static String encrypyPasswd(String passwd){
 		byte[] digesta = null;
         try {
             // 得到一个SHA-1的消息摘要
-            MessageDigest alga = MessageDigest.getInstance("SHA-1");
+            MessageDigest alga = MessageDigest.getInstance(encrypyString);
             // 添加要进行计算摘要的信息
             alga.update(passwd.getBytes());
             // 得到该摘要

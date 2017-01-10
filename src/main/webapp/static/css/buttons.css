@@ -1108,7 +1108,7 @@
 */
 .button-glow.button-primary {
   border-radius: 20px;
-  border-color: #2a253a;
+  border-color: rgb(48, 57, 62);
   -webkit-animation-name: glowing-primary;
           animation-name: glowing-primary; }
 .button-glow.button-plain {

@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -54,7 +55,9 @@ public class ShiroDbRealm extends AuthorizingRealm {
     
     token.setPassword((String.valueOf(token.getPassword()) + Common.passwdSuffix + user.getSalt()).toCharArray());
 
-    /* byte[] salt = Encodes.decodeHex(user.getSalt()); */
+//    if (Common.encrypyPasswd(String.valueOf(token.getPassword()) + Common.passwdSuffix + user.getSalt()).equals(user.getPassword()) == false){
+//    	throw new IncorrectCredentialsException();
+//    }
 
     //return new SimpleAuthenticationInfo(new ShiroUser(user.getId(), user.getLoginName(), user.getName()), user.getPassword(), getName());
     return new SimpleAuthenticationInfo(new ShiroUser(user.getId(), user.getEmail(), user.getNickName()), user.getPassword(), getName());
@@ -128,7 +131,10 @@ public class ShiroDbRealm extends AuthorizingRealm {
    * 自定义Authentication对象，使得Subject除了携带用户的登录名外还可以携带更多信息.
    */
   public static class ShiroUser implements Serializable {
-    private static final long serialVersionUID = -1373760761780840081L;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7069160581006206891L;
     public String id;
     public String loginName;
     public String name;
