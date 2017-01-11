@@ -78,6 +78,8 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/base* = anon
+				/account/logout = anon
+				/account/signup = anon
 				/account/** = user
 				/login/signup = anon
 				/login/** = anon
@@ -91,7 +93,7 @@
 				/process/** = user
 				/file/** = anon
 				/paytran/create = anon
-				/ajax/** = anon
+				/ajax/** = anon 
 				/register/** = anon
 				/admin/** = roles[admin]
 				/favicon.ico = anon
