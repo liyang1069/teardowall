@@ -179,6 +179,11 @@ public class WebSiteService extends BaseService {
 			String secondDomain = getSecondDomain(host);
 			for(Iterator<Icon> it = icons.iterator(); it.hasNext(); ){
 				Icon icon = it.next();
+				if(Common.stringIsEmpty(icon.getKeyword()))
+					continue;
+				if(icon.getKeyword().equals(domain) || icon.getKeyword().equals(secondDomain)){
+					return icon.getId();
+				}
 				if(icon.getKeyword().indexOf(secondDomain) >= 0){
 					chosenIcons.add(icon);
 				}
