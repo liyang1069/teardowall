@@ -4,7 +4,7 @@ public class Icon extends BaseModel {
 	private String path;
 	private String name;
 	private String keyword;
-	private long size;
+	private int size;
 	
 	public String getPath() {
 		return path;
@@ -24,10 +24,10 @@ public class Icon extends BaseModel {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
-	public long getSize() {
+	public int getSize() {
 		return size;
 	}
-	public void setSize(long size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 }

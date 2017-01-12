@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.teardowall.mapper.IconMapper">
+
+	<!-- <resultMap id="iconMap" type="com.teardowall.models.Icon">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="web_url" property="webUrl"/>
+		<result column="icon_id" property="iconId"/>
+		<result column="is_default" property="isDefault"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="updated_at" property="updatedAt"/>
+	</resultMap> -->
+	
+	<sql id="webSiteColums">
+		name, path, keyword, size, created_at, updated_at
+	</sql>
+	
+	<select id="getIconByKeyWord" parameterType="string" resultType="com.teardowall.models.Icon">
+		select * from icons where keyword like CONCAT('%',#{keyword},'%')
+	</select>
+</mapper>
