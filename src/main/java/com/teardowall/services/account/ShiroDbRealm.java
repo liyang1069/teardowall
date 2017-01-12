@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -25,6 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Objects;
+import com.teardowall.common.Common;
 import com.teardowall.models.User;
 
 public class ShiroDbRealm extends AuthorizingRealm {
@@ -41,26 +43,24 @@ public class ShiroDbRealm extends AuthorizingRealm {
   @Override
   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
     UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-    User user = null;//accountService.findUserByEmail(token.getUsername());
+	User user = accountService.findUserByEmail(token.getUsername());
 
     if (user == null) {
       throw new UnknownAccountException();// 没找到帐号
     }
 
-    // user.setStatus("Paused");
-    //if ("Paused".equals(user.getStatus()) || "Stopped".equals(user.getStatus())) {
-    if (false) {
-
+    if (user.getEmailActive() != 1) {
       throw new LockedAccountException(); // 帐号锁定
     }
+    
+    token.setPassword((String.valueOf(token.getPassword()) + Common.passwdSuffix + user.getSalt()).toCharArray());
 
-    //token.setPassword((String.valueOf(token.getPassword()) + "wibble" + user.getSalt()).toCharArray());
-    token.setPassword((String.valueOf(token.getPassword()) + "wibble").toCharArray());
-
-    /* byte[] salt = Encodes.decodeHex(user.getSalt()); */
+//    if (Common.encrypyPasswd(String.valueOf(token.getPassword()) + Common.passwdSuffix + user.getSalt()).equals(user.getPassword()) == false){
+//    	throw new IncorrectCredentialsException();
+//    }
 
     //return new SimpleAuthenticationInfo(new ShiroUser(user.getId(), user.getLoginName(), user.getName()), user.getPassword(), getName());
-    return new SimpleAuthenticationInfo(new ShiroUser(new Long(1), "", user.getName()), "", getName());
+    return new SimpleAuthenticationInfo(new ShiroUser(user.getId(), user.getEmail(), user.getNickName()), user.getPassword(), getName());
 
     /*
      * return new SimpleAuthenticationInfo( new ShiroUser(user.getId(), user.getLoginName(),
@@ -131,12 +131,15 @@ public class ShiroDbRealm extends AuthorizingRealm {
    * 自定义Authentication对象，使得Subject除了携带用户的登录名外还可以携带更多信息.
    */
   public static class ShiroUser implements Serializable {
-    private static final long serialVersionUID = -1373760761780840081L;
-    public Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7069160581006206891L;
+    public String id;
     public String loginName;
     public String name;
 
-    public ShiroUser(Long id, String loginName, String name) {
+    public ShiroUser(String id, String loginName, String name) {
       this.id = id;
       this.loginName = loginName;
       this.name = name;

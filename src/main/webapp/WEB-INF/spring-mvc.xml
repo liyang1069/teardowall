@@ -50,7 +50,7 @@
 	<mvc:default-servlet-handler />
 
 	<!-- 定义无需Controller的url<->view直接映射 -->
-	<mvc:view-controller path="/" view-name="redirect:/base" />
+	<mvc:view-controller path="/" view-name="redirect:/web_group/default" />
 
 	<!-- i18n -->
 	<bean id="messageSource"

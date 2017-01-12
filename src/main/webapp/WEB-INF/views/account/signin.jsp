@@ -11,6 +11,7 @@
 <html>
 <head>
   <title>Teardowall</title>
+  <link rel = "Shortcut Icon" href="${ctx}/static/images/logo/favicon.ico">
   <!-- 新 Bootstrap 核心 CSS 文件 -->
   <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 

@@ -7,6 +7,8 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -99,6 +101,10 @@ public class AccountController extends BaseController {
 		if(Common.stringIsEmpty((String)session.getAttribute("userId")) == false){
 			session.removeAttribute("username");
 			session.removeAttribute("userId");
+		}
+		Subject subject = SecurityUtils.getSubject();
+		if (subject.isAuthenticated() || subject.isRemembered()){
+			subject.logout();
 		}
 		return "redirect:/login";
 	}

@@ -3,10 +3,13 @@ package com.teardowall.controllers;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.teardowall.services.account.ShiroDbRealm.ShiroUser;
 
 
 @Controller
@@ -16,10 +19,12 @@ public class BaseController {
 	protected String userName;
 	protected String userId;
 	
-	protected void getSession(HttpServletRequest request){
-		HttpSession session = request.getSession();
-		userId = (String)session.getAttribute("userId");
-		userName = (String)session.getAttribute("username");
+	protected void getSession(){
+		if (SecurityUtils.getSubject().isAuthenticated() == false && SecurityUtils.getSubject().isRemembered() == false)
+			return;
+		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+		userId = user.id;
+		userName = user.name;
 	}
 
 	@ResponseBody
