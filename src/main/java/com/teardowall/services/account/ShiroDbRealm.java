@@ -53,7 +53,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
       throw new LockedAccountException(); // 帐号锁定
     }
     
-    token.setPassword((String.valueOf(token.getPassword()) + Common.passwdSuffix + user.getSalt()).toCharArray());
+    token.setPassword((String.valueOf(token.getPassword()) + Common.PASSWD_SUFFIX + user.getSalt()).toCharArray());
 
 //    if (Common.encrypyPasswd(String.valueOf(token.getPassword()) + Common.passwdSuffix + user.getSalt()).equals(user.getPassword()) == false){
 //    	throw new IncorrectCredentialsException();

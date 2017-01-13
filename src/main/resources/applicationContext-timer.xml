@@ -15,28 +15,28 @@
 	<description>定时器</description>
 	<beans>
 		<!-- 定时任务 START -->
-		<bean id="emailRetryTaskObject" class="com.asgab.task.EmailRetryTask" />
+		<bean id="iconGeneratorTaskObject" class="com.teardowall.task.IconGenerator" />
 
-		<bean id="emailRetryTaskObjDetail"
+		<bean id="iconGeneratorDetail"
 			class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-			<property name="targetObject" ref="emailRetryTaskObject" />
+			<property name="targetObject" ref="iconGeneratorTaskObject" />
 			<property name="targetMethod" value="run" />
 			<property name="concurrent" value="false" /><!-- 不允许并发执行 -->
 		</bean>
 
-		<bean id="emailRetryTaskObjectTrigger"
+		<bean id="iconGeneratorTaskObjectTrigger"
 			class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-			<property name="jobDetail" ref="emailRetryTaskObjDetail" />
+			<property name="jobDetail" ref="iconGeneratorDetail" />
 			<property name="cronExpression">
 				<!-- 秒，分，时，日期，月份，周几 -->
-				<value>0 0/10 * * * ?</value><!-- 每十分钟一次 -->
+				<value>0 0 3 * * ?</value><!-- 每天3点执行一次 -->
 			</property>
 		</bean>
 
 		<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 			<property name="triggers">
 				<list>
-					<ref bean="emailRetryTaskObjectTrigger" />
+					<ref bean="iconGeneratorTaskObjectTrigger" />
 				</list>
 			</property>
 		</bean>

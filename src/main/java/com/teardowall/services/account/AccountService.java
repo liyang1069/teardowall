@@ -53,7 +53,7 @@ public class AccountService extends BaseService {
 	  user.setEmail(email);
 	  user.setEmailActive(0);
 	  user.setSalt(Common.generateRandom());
-	  user.setPassword(Common.encrypyPasswd(password + Common.passwdSuffix + user.getSalt()));
+	  user.setPassword(Common.encrypyPasswd(password + Common.PASSWD_SUFFIX + user.getSalt()));
 	  Date date = new Date();
 	  user.setCreatedAt(date);
 	  user.setUpdatedAt(date);

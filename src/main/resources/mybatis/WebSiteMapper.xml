@@ -62,5 +62,9 @@
 	<delete id="deleteGroupSiteRelationByGroupId" parameterType="string">
 		delete from groups_sites where web_group_id = #{groupId}
 	</delete>
+	
+	<select id="getDefaultIconSites" parameterType="string" resultMap="webSiteMap">
+		select * from web_sites where icon_id = #{iconId} and (TO_DAYS(NOW()) - TO_DAYS(updated_at) &lt;= 7)
+	</select>
 
 </mapper> 

@@ -86,11 +86,11 @@ public class WebSiteService extends BaseService {
 	
 	public String iconPathById(String iconId){
 		if(iconId == null || iconId.isEmpty()){
-			return Common.defaultIconPath;
+			return Common.DEFAULT_ICON_PATH;
 		}
 		String iconPath = webSiteMapper.iconPathById(iconId);
 		if(iconPath == null || iconPath.isEmpty()){
-			iconPath = Common.defaultIconPath;
+			iconPath = Common.DEFAULT_ICON_PATH;
 		}
 		return iconPath;
 	}
@@ -99,7 +99,7 @@ public class WebSiteService extends BaseService {
 		WebSite site = new WebSite();
 		site.setName(name);
 		if(Common.stringIsEmpty(iconId)){
-			iconId = Common.defaultIconId;
+			iconId = Common.DEFAULT_ICON_ID;
 		}
 		site.setIconId(iconId);
 		site.setWebUrl(webUrl);
@@ -163,7 +163,7 @@ public class WebSiteService extends BaseService {
 	}
 	
 	public String getIconIdByUrl(String webUrl){
-		String iconId = Common.defaultIconId;
+		String iconId = Common.DEFAULT_ICON_ID;
 		if(Common.stringIsEmpty(webUrl))
 			return iconId;
 		String host = getHost(webUrl);
@@ -196,5 +196,9 @@ public class WebSiteService extends BaseService {
 			}
 		}
 		return iconId;
+	}
+	
+	public List<WebSite> getDefaultIconSites(){
+		return webSiteMapper.getDefaultIconSites(Common.DEFAULT_ICON_ID);
 	}
 }

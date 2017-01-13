@@ -18,4 +18,5 @@ public interface WebSiteMapper {
 	void insertGroupSiteRelation(GroupsSites gs);
 	void deleteSitesByGroupId(String groupId);
 	void deleteGroupSiteRelationByGroupId(String groupId);
+	List<WebSite> getDefaultIconSites(String iconId);
 }
