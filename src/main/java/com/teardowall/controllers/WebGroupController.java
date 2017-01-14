@@ -33,9 +33,7 @@ public class WebGroupController extends BaseController {
 	public String defaultPage(HttpServletRequest request, Model model){
 		System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
 		System.out.println("NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
-		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("userId");
-		String userName = (String)session.getAttribute("userName");
+		getSession();
 		System.out.println(userId);
 		List<WebGroup> groups = null;
 		if(Common.stringIsEmpty(userId)){
