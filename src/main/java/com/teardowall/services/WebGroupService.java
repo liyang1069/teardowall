@@ -166,7 +166,10 @@ public class WebGroupService extends BaseService {
 			webSiteMapper.deleteGroupSiteRelationByGroupId(group.getId());
 			for(int i = 0; i < webConfig.getUrl().size(); i++){
 				//返回值，值得深究
-				WebSite site = webSiteService.newSite(webConfig.getName().get(i), webConfig.getIcon().get(i), webConfig.getUrl().get(i), 0);
+				String iconId = webSiteService.getIconIdByUrl(webConfig.getUrl().get(i));
+				System.out.println(iconId);
+				//WebSite site = webSiteService.newSite(webConfig.getName().get(i), webConfig.getIcon().get(i), webConfig.getUrl().get(i), 0);
+				WebSite site = webSiteService.newSite(webConfig.getName().get(i), iconId, webConfig.getUrl().get(i), 0);
 				webSiteMapper.insertWeb(site);
 				webSiteMapper.insertGroupSiteRelation(webSiteService.newGroupSite(group.getId(), site.getId(), i+1));
 			}

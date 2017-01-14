@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.teardowall.common.Common;
+import com.teardowall.mapper.IconMapper;
 import com.teardowall.mapper.WebSiteMapper;
 import com.teardowall.models.GroupsSites;
 import com.teardowall.models.Icon;
@@ -23,6 +27,9 @@ public class WebSiteService extends BaseService {
 	
 	@Resource
 	private WebSiteMapper webSiteMapper;
+	
+	@Resource
+	private IconMapper iconMapper;
 	
 	public int getTest(int id){
 		return webSiteMapper.getTest(id);
@@ -52,7 +59,7 @@ public class WebSiteService extends BaseService {
 		String name = file.getName();
 		icon.setName(name);
 		icon.setPath(Common.icon_path_relative + name);
-		icon.setSize(file.length()/1024);
+		icon.setSize((int)(file.length()/1024));
 		String[] sp = name.split("\\.");
 		icon.setKeyword(sp[0]);
 		return icon;
@@ -112,5 +119,82 @@ public class WebSiteService extends BaseService {
 		gs.setCreatedAt(date);
 		gs.setUpdatedAt(date);
 		return gs;
+	}
+	
+	public String getHost(String url) {
+		if (url == null || url.trim().equals("")) {
+			return "";
+		}
+		String host = "";
+		Pattern p = Pattern.compile("(?<=//|)((\\w)+\\.)+\\w+(:\\d*)?");
+		Matcher matcher = p.matcher(url);
+		if (matcher.find()) {
+			host = matcher.group();
+		}
+		return host;
+	}
+	
+	public String getDomain(String host){
+		if (Common.stringIsEmpty(host) || host.trim().equals("")) {
+			return "";
+		}
+		host = host.replaceAll("www.", "");
+		Pattern p = Pattern.compile(Common.topDomain);
+		Matcher matcher;
+		for(int i = 0; i < 2; i++){
+			if(host.indexOf(".") < 0)
+				break;
+			matcher = p.matcher(host);
+			host = matcher.replaceAll("");
+		}
+		String[] strs = host.split("\\.");
+		if(strs.length >= 2){
+			return strs[strs.length - 1];
+		}
+		return strs[0];
+	}
+	
+	public String getSecondDomain(String host){
+		if (Common.stringIsEmpty(host) || host.trim().equals("")) {
+			return "";
+		}
+		String[] strs = host.split("\\.");
+		return strs[0];
+	}
+	
+	public String getIconIdByUrl(String webUrl){
+		String iconId = Common.defaultIconId;
+		if(Common.stringIsEmpty(webUrl))
+			return iconId;
+		String host = getHost(webUrl);
+		String domain = getDomain(host);
+		List<Icon> icons = iconMapper.getIconByKeyWord(domain);
+		if(icons == null || icons.size() == 0 || icons.isEmpty())
+			return iconId;
+		if(icons.size() == 1){
+			iconId = icons.get(0).getId();
+		}
+		else{
+			List<Icon> chosenIcons = new ArrayList<>();
+			String secondDomain = getSecondDomain(host);
+			for(Iterator<Icon> it = icons.iterator(); it.hasNext(); ){
+				Icon icon = it.next();
+				if(Common.stringIsEmpty(icon.getKeyword()))
+					continue;
+				if(icon.getKeyword().equals(domain) || icon.getKeyword().equals(secondDomain)){
+					return icon.getId();
+				}
+				if(icon.getKeyword().indexOf(secondDomain) >= 0){
+					chosenIcons.add(icon);
+				}
+			}
+			if(chosenIcons.isEmpty() == false){
+				iconId = chosenIcons.get(0).getId();
+			}
+			else{
+				iconId = icons.get(0).getId();
+			}
+		}
+		return iconId;
 	}
 }

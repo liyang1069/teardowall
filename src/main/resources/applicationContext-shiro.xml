@@ -80,7 +80,8 @@
 				/base* = anon
 				/account/logout = anon
 				/account/signup = anon
-				/account/** = user
+				/account/auth_email = anon
+				/account/** = anon
 				/login/signup = anon
 				/login/** = anon
 				/web_group/default = anon
