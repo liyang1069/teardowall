@@ -42,7 +42,7 @@ public class AccountService extends BaseService {
   }
 
   public User findUserById(String id) {
-	  User user = userMapper.findUserByEmail(id);
+	  User user = userMapper.findUserById(id);
 	  return user;
   }
   
