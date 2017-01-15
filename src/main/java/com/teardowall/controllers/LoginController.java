@@ -1,6 +1,5 @@
 package com.teardowall.controllers;
 
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -48,7 +47,7 @@ public class LoginController extends BaseController {
 		
 		return "account/signin";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String doLogin(@RequestParam String username, @RequestParam String password,HttpServletRequest request, Model model) {
 		System.out.println("DDDDDDDDDDDDDDDDD");
