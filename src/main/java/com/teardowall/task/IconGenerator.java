@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jsoup.Connection;
@@ -12,6 +14,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.teardowall.common.Common;
 import com.teardowall.models.WebSite;
@@ -21,8 +24,8 @@ public class IconGenerator {
 	
 	Log log = LogFactory.getLog(IconGenerator.class);
 	
-	//@Autowired
-	private WebSiteService webSiteService;
+	@Autowired
+	protected WebSiteService webSiteService;
 	
 	public void run(){
 		log.debug(generateLog(Common.date2StringByFormat(new Date(), Common.STANDARD_DATE)));
@@ -69,5 +72,9 @@ public class IconGenerator {
 		str.append(log);
 		str.append("****************************");
 		return str.toString();
+	}
+	
+	public void setWebSiteService(WebSiteService webSiteService){
+		this.webSiteService = webSiteService;
 	}
 }

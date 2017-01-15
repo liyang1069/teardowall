@@ -13,6 +13,7 @@
   <%@ include file="/WEB-INF/layouts/header.jsp"%>
   <body>
     <sitemesh:body/>
+    <%@ include file="/WEB-INF/layouts/footer.jsp"%>
   </body>
   <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
   <script src="http://s1.bdstatic.com/r/www/cache/global/js/BaiduHttps_20150714_zhanzhang.js"></script>

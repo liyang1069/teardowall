@@ -9,26 +9,7 @@
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
-<head>
-  <title>Teardowall</title>
-  <link rel = "Shortcut Icon" href="${ctx}/static/images/logo/favicon.ico">
-  <!-- 新 Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-
-  <!-- 可选的Bootstrap主题文件（一般不用引入） -->
-  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-
-  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-
-  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-  <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <link href="${ctx}/static/css/site.css?id=909" media="all" rel="stylesheet" type="text/css">
-  <link href="${ctx}/static/css/docs.min.css?id=919" media="all" rel="stylesheet" type="text/css">
-  <link href="${ctx}/static/css/fat.css?id=99" media="all" rel="stylesheet" type="text/css">
-  <link href="${ctx}/static/css/buttons.css?id=99" media="all" rel="stylesheet" type="text/css">
-  <link href="${ctx}/static/css/login.min.css?id=11" media="all" rel="stylesheet" type="text/css">
-</head>
+<%@ include file="/WEB-INF/layouts/header.jsp"%>
 <body class="home-template">
   <header class="navbar navbar-static-top bs-docs-nav top-header" id="top" role="banner">
     <div class="container">
@@ -147,27 +128,7 @@
     </div>
 
   </div>
-  <footer class="bs-docs-footer fat-footer" role="contentinfo">
-    <div class="container">
-      <p>
-        Designed and built with all the love in the world by 
-        <a href="mailto:teardowall@163.com" target="_blank">@Jackson</a>
-         and 
-        <a href="https://twitter.com/Jerry1069li" target="_blank">@Jerry</a>.
-      </p>
-      <!-- <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/liyang1069/teardowall/graphs/contributors">our contributors</a>.</p>
-      <p>本项目源码受 <a href="https://github.com/liyang1069/teardowall/blob/master/LICENSE" target="_blank">MIT</a> 开源协议保护，文档受 <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> 开源协议保护。</p> -->
-      <ul class="bs-docs-footer-links muted">
-        <li>当前版本： v1.0.0</li>
-        <li>·</li>
-        <li><a href="https://github.com/liyang1069/teardowall">GitHub 仓库</a></li>
-        <li>·</li>
-        <li><a href="https://github.com/liyang1069/teardowall/blob/master/README.md">关于</a></li>
-      </ul>
-      <p>Anything is open source. Anything is internationalization. Anything is any persion.</p>
-      <p>TEAR DOWN THE WALL.WE ALL ARE A FAMILY.</p>
-    </div>
-  </footer>
+  <%@ include file="/WEB-INF/layouts/footer.jsp"%>
 </body>
 <script type="text/javascript">
   $(function(){

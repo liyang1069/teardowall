@@ -21,4 +21,5 @@
   <link href="${ctx}/static/css/docs.min.css" media="all" rel="stylesheet" type="text/css">
   <link href="${ctx}/static/css/fat.css" media="all" rel="stylesheet" type="text/css">
   <link href="${ctx}/static/css/buttons.css" media="all" rel="stylesheet" type="text/css">
+  <link href="${ctx}/static/css/login.min.css?id=11" media="all" rel="stylesheet" type="text/css">
 </head>
