@@ -9,7 +9,7 @@
 
     <tr>
       <%-- <c:forEach begin="1" end="4"> --%>
-      <c:forEach items="${subSites}" var="site">
+      <c:forEach items="${subSites}" var="site" varStatus="status">
         <%-- <jsp:include page="oneCell.jsp" flush="true"/> --%>
         <%@include file="oneCell.jsp" %>
       </c:forEach>

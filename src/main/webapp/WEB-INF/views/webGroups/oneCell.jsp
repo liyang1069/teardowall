@@ -6,9 +6,13 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 
-
-    <td class="col-md-3 center-align border-solid-1">
-      <a href="${site.webUrl}" target="_blank">
+	<c:if test="${status.index != 3}">
+    	<td class="col-md-3 center-align website-td border-solid-1">
+	</c:if>
+	<c:if test="${status.index == 3}">
+    	<td class="col-md-3 center-align website-td border-solid-1" style="border-right: 0px;">
+	</c:if>
+      <a href="${site.webUrl}" class="website" target="_blank">
         <span class="margin-right-10">
         	<c:if test="${site.iconPath != null && site.iconPath.length() > 0 }">
         		<img class="content-img" src="${ctx}${site.iconPath}">
