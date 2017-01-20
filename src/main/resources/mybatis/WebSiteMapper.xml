@@ -68,7 +68,7 @@
 	</delete>
 	
 	<select id="getDefaultIconSites" parameterType="string" resultMap="webSiteMap">
-		select * from web_sites where icon_id = #{iconId} and (TO_DAYS(NOW()) - TO_DAYS(updated_at) &lt;= 70)
+		select * from web_sites where icon_id = #{iconId} and (TO_DAYS(NOW()) - TO_DAYS(updated_at) &lt;= 10)
 	</select>
 
 </mapper> 

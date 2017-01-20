@@ -42,6 +42,7 @@ public class IconGenerator {
 			}
 			try {
 				webSiteService.updateIconIdByUrl(site, captureIcon(site.getWebUrl()));
+				updateSiteLog(site);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -65,6 +66,17 @@ public class IconGenerator {
 		}
 		//System.out.println(links.get(0));
 		return iconUrl;
+	}
+	
+	private void updateSiteLog(WebSite site){
+		StringBuilder logString = new StringBuilder(Common.date2StringByFormat(new Date(), Common.STANDARD_DATE));
+		logString.append(" ");
+		logString.append(site.getId());
+		logString.append(" ");
+		logString.append(site.getWebUrl());
+		logString.append(" ");
+		logString.append(site.getIconId());
+		log.debug(logString.toString());
 	}
 	
 	private String generateLog(String log){

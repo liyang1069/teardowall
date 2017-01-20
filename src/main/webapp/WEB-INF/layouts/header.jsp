@@ -19,7 +19,7 @@
   <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <link href="${ctx}/static/css/site.css" media="all" rel="stylesheet" type="text/css">
   <link href="${ctx}/static/css/docs.min.css" media="all" rel="stylesheet" type="text/css">
-  <link href="${ctx}/static/css/fat.css" media="all" rel="stylesheet" type="text/css">
+  <link href="${ctx}/static/css/fat.css?id=99" media="all" rel="stylesheet" type="text/css">
   <link href="${ctx}/static/css/buttons.css" media="all" rel="stylesheet" type="text/css">
   <link href="${ctx}/static/css/login.min.css?id=11" media="all" rel="stylesheet" type="text/css">
 </head>
