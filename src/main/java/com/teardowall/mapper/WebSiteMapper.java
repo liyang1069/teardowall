@@ -13,6 +13,7 @@ public interface WebSiteMapper {
 	void insertIconBatch(List<Icon> list);
 	void insertIcon(Icon icon);
 	long insertWeb(WebSite site);
+	void updateWeb(WebSite site);
 	List<WebSite> getSitesByGroupId(String groupId);
 	String iconPathById(String iconId);
 	void insertGroupSiteRelation(GroupsSites gs);

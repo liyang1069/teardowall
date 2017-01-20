@@ -29,10 +29,11 @@ public class IconGenerator {
 	
 	public void run(){
 		log.debug(generateLog(Common.date2StringByFormat(new Date(), Common.STANDARD_DATE)));
-		boolean bool = true;
-		if(bool){
-			return;
-		}
+		generateIcons();
+		log.debug(generateLog(Common.date2StringByFormat(new Date(), Common.STANDARD_DATE)));
+	}
+	
+	private void generateIcons(){
 		List<WebSite> sites = webSiteService.getDefaultIconSites();
 		for(Iterator<WebSite> iterator = sites.iterator(); iterator.hasNext();){
 			WebSite site = iterator.next();
@@ -40,7 +41,7 @@ public class IconGenerator {
 				continue;
 			}
 			try {
-				captureIcon(site.getWebUrl());
+				webSiteService.updateIconIdByUrl(site, captureIcon(site.getWebUrl()));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -62,7 +63,7 @@ public class IconGenerator {
 		if(iconUrl.isEmpty()){
 			iconUrl = urlStr + "favicon.ico";
 		}
-		System.out.println(links.get(0));
+		//System.out.println(links.get(0));
 		return iconUrl;
 	}
 	
@@ -74,7 +75,4 @@ public class IconGenerator {
 		return str.toString();
 	}
 	
-	public void setWebSiteService(WebSiteService webSiteService){
-		this.webSiteService = webSiteService;
-	}
 }

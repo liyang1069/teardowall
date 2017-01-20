@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Common {
-	public static final String VERISON = "0.4.1";
+	public static final String VERISON = "0.4.2";
 	public static String icon_path_relative = "/static/icon/";
 	public static String icon_path_absolute = "/Users/jerry.li/projects/java/cp_file/origin_project/src/main/webapp"+icon_path_relative;
 	public static int[] testArray = {1,2,3,4};

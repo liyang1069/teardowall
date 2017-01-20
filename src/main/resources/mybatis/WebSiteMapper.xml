@@ -42,6 +42,10 @@
 		(#{name}, #{webUrl}, #{iconId}, #{isDefault}, #{createdAt}, #{updatedAt})
 	</insert>
 	
+	<update id="updateWeb" parameterType="com.teardowall.models.WebSite">
+		update web_sites set name = #{name}, web_url = #{webUrl}, icon_id = #{iconId}, is_default = #{isDefault}, created_at = #{createdAt}, updated_at = #{updatedAt} where id = #{id}
+	</update>
+	
 	<select id="getSitesByGroupId" parameterType="string" resultMap="webSiteMap">
 		select id, <include refid="webSiteColums"/> FROM teardowall.web_sites ws where ws.id in (select gs.web_site_id from teardowall.groups_sites gs where gs.web_group_id = #{groupId} order by serial_num asc)
 	</select>
@@ -64,7 +68,7 @@
 	</delete>
 	
 	<select id="getDefaultIconSites" parameterType="string" resultMap="webSiteMap">
-		select * from web_sites where icon_id = #{iconId} and (TO_DAYS(NOW()) - TO_DAYS(updated_at) &lt;= 7)
+		select * from web_sites where icon_id = #{iconId} and (TO_DAYS(NOW()) - TO_DAYS(updated_at) &lt;= 70)
 	</select>
 
 </mapper> 

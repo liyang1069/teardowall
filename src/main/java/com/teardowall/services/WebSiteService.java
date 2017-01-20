@@ -95,6 +95,18 @@ public class WebSiteService extends BaseService {
 		return iconPath;
 	}
 	
+	public Icon newIcon(String name, String path, int size, String keyWord){
+		Icon icon = new Icon();
+		icon.setName(name);
+		icon.setPath(path);
+		icon.setSize(size);
+		icon.setKeyword(keyWord);
+		Date date = new Date();
+		icon.setCreatedAt(date);
+		icon.setUpdatedAt(date);
+		return icon;
+	}
+	
 	public WebSite newSite(String name, String iconId, String webUrl, int isDefault){
 		WebSite site = new WebSite();
 		site.setName(name);
@@ -200,5 +212,17 @@ public class WebSiteService extends BaseService {
 	
 	public List<WebSite> getDefaultIconSites(){
 		return webSiteMapper.getDefaultIconSites(Common.DEFAULT_ICON_ID);
+	}
+	
+	public void updateIconIdByUrl(WebSite site, String iconUrl){
+		if(Common.stringIsEmpty(iconUrl))
+			return;
+		Icon icon = iconMapper.getIconByPath(iconUrl);
+		if(icon == null || Common.stringIsEmpty(icon.getId()) || "0".equals(icon.getId())){
+			icon = newIcon("", iconUrl, 0, site.getWebUrl());
+			iconMapper.insertIcon(icon);
+		}
+		site.setIconId(icon.getId());
+		webSiteMapper.updateWeb(site);
 	}
 }

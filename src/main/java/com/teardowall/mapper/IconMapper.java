@@ -8,4 +8,6 @@ import com.teardowall.models.Icon;
 @TearMapper
 public interface IconMapper {
 	List<Icon> getIconByKeyWord(String keyword);
+	Icon getIconByPath(String path);
+	long insertIcon(Icon icon);
 }

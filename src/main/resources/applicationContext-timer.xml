@@ -16,9 +16,7 @@
 	<beans>
 		<!-- <bean id="webSiteService" class="com.teardowall.services.WebSiteService" /> -->
 		<!-- 定时任务 START -->
-		<bean id="iconGeneratorTaskObject" class="com.teardowall.task.IconGenerator">
-			<property name="webSiteService" ref="webSiteService" />
-		</bean>
+		<bean id="iconGeneratorTaskObject" class="com.teardowall.task.IconGenerator" />
 
 		<bean id="iconGeneratorDetail"
 			class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">

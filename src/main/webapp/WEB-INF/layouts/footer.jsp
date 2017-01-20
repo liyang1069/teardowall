@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ page import="com.teardowall.common.Common" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="version" value="<%= Common.VERISON %>" />
+<% request.setAttribute("VERSION", com.teardowall.common.Common.VERISON); %>
 <footer class="bs-docs-footer fat-footer" role="contentinfo">
   <div class="container">
     <p>
@@ -11,7 +11,7 @@
       <a href="https://twitter.com/Jerry1069li" target="_blank">@Jerry</a>.
     </p>
     <ul class="bs-docs-footer-links muted">
-      <li>当前版本： v${version}</li>
+      <li>当前版本： v${VERSION}</li>
       <li>·</li>
       <li><a href="https://github.com/liyang1069/teardowall">GitHub 仓库</a></li>
       <li>·</li>

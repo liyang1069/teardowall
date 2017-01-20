@@ -21,4 +21,15 @@
 	<select id="getIconByKeyWord" parameterType="string" resultType="com.teardowall.models.Icon">
 		select * from icons where keyword like CONCAT('%',#{keyword},'%')
 	</select>
+	
+	<select id="getIconByPath" parameterType="string" resultType="com.teardowall.models.Icon">
+		select * from icons where path = #{path} limit 1
+	</select>
+	
+	<insert id="insertIcon" useGeneratedKeys="true" keyProperty="id" parameterType="com.teardowall.models.Icon">
+		
+		insert into icons (name, path, keyword, size, created_at, updated_at) values
+		
+		(#{name}, #{path}, #{keyword}, #{size}, #{createdAt}, #{updatedAt})
+	</insert>
 </mapper>
