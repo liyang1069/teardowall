@@ -67,7 +67,7 @@
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/login" />
-		<property name="successUrl" value="/paytran" />
+		<property name="successUrl" value="/web_group/index" />
 		<property name="unauthorizedUrl" value="/web_group/default"/> 
 		<property name="filters">
 			<util:map>

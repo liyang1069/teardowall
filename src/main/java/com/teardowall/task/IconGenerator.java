@@ -58,6 +58,12 @@ public class IconGenerator {
 			Element e= it.next();
 			if(e.attr("href").indexOf(".ico") >= 0){
 				iconUrl = e.attr("href");
+				if(iconUrl.indexOf("//") == 0){
+					iconUrl = iconUrl.replace("//", "");
+				}
+				else if(iconUrl.indexOf("/") == 0){
+					iconUrl = urlStr + iconUrl;
+				}
 				break;
 			}
 		}
