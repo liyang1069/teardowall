@@ -29,6 +29,10 @@
 		select id, <include refid="webGroupColumns"/> from web_groups where id = #{groupId}
 	</select>
 	
+	<select id="getGroupByIdAndUserId" resultMap="webGroupMap">
+		select id, <include refid="webGroupColumns"/> from web_groups where id = #{0} and user_id = #{1}
+	</select>
+	
 	<insert id="insertGroup" useGeneratedKeys="true" keyProperty="id" parameterType="com.teardowall.models.WebGroup">
 		insert into web_groups (name, user_id, is_default, created_at, updated_at) values (#{name}, #{userId}, #{isDefault}, #{createdAt}, #{updatedAt})
 	</insert>
@@ -36,4 +40,10 @@
 	<update id="updateGroup" parameterType="com.teardowall.models.WebGroup">
 		update web_groups set name=#{name}, user_id=#{userId}, is_default=#{isDefault}, created_at=#{createdAt}, updated_at=#{updatedAt} where id=#{id}
 	</update>
+	
+	<delete id="deleteGroup" parameterType="string">
+		delete from web_sites where id in (select web_site_id from groups_sites where web_group_id = #{groupId});
+		delete from groups_sites where web_group_id = #{groupId};
+		delete from web_groups where id = #{groupId};
+	</delete>
 </mapper> 

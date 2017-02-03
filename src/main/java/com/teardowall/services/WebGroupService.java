@@ -46,6 +46,11 @@ public class WebGroupService extends BaseService {
 		return group;
 	}
 	
+	public WebGroup getGroupByIdAndUserId(String groupId, String userId){
+		WebGroup group = webGroupMapper.getGroupByIdAndUserId(groupId, userId);
+		return group;
+	}
+	
 	public List<WebGroup> getDefaultGroups(){
 		//WebGroup[] groups = webGroupMapper.getDefaultGroups();
 		List<WebGroup> groups = webGroupMapper.getDefaultGroups();
@@ -175,5 +180,13 @@ public class WebGroupService extends BaseService {
 			}
 		}
 		
+	}
+	
+	public void deleteGroup(String webGroupId, String userId){
+		WebGroup group = getGroupByIdAndUserId(webGroupId, userId);
+		if(group == null){
+			return;
+		}
+		webGroupMapper.deleteGroup(webGroupId);
 	}
 }

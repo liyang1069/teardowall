@@ -24,7 +24,18 @@
         </c:forEach>
       </div>
     </div>
-    <div class="padding-left-20"><input type="submit"></div>
+    <div class="padding-left-20">
+	    <input type="submit" class="margin-right-10">
+	    <%-- <c:if test="$"></c:if> --%>
+	    <input type="button" onclick="deleteGroup()" value="删除网站组合">
+    </div>
   </form>
+<script type="text/javascript">
+  function deleteGroup(){
+    if (confirm("你确定删除网站组合吗？")) {
+      window.location.href = "${ctx}/web_group/${webGroupId}/delete_group";
+    }
+  }
+</script>
 </body>
 </html>

@@ -110,4 +110,14 @@ public class WebGroupController extends BaseController {
 		webGroupService.updateGroup(webConfig, userId);
 		return "redirect:/web_group/index";
 	}
+	
+	@RequestMapping(value = "/{webGroupId}/delete_group", method = RequestMethod.GET)
+	public String deleteGroup(Model model, @PathVariable String webGroupId){
+		getSession();
+		if(Common.stringIsEmpty(userId)){
+			return "redirect:/login";
+		}
+		webGroupService.deleteGroup(webGroupId, userId);
+		return "redirect:/web_group/index";
+	}
 }

@@ -11,6 +11,8 @@ public interface WebGroupMapper {
 	List<WebGroup> getDefaultGroups();
 	List<WebGroup> getGroupsByUserId(String userId);
 	WebGroup getGroupById(String groupId);
+	WebGroup getGroupByIdAndUserId(String groupId, String userId);
 	long insertGroup(WebGroup group);
 	void updateGroup(WebGroup group);
+	void deleteGroup(String groupId);
 }
