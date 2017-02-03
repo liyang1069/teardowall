@@ -43,6 +43,9 @@
 .margin-right-10{
   margin-right: 10px;
 }
+.msg-h1 {
+  height: 70%;
+}
 .border-solid-1{
   border-style: solid;
   border-color: #ddd;

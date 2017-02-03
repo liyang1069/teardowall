@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 class="padding-left-20">
+	<h1 class="padding-left-20 margin-top-30 msg-h1">
 		<c:if test="${ href != null}">
 			<a href="${ctx}${href}">${msg}</a>
 		</c:if>
