@@ -11,7 +11,7 @@
       <a href="https://twitter.com/Jerry1069li" target="_blank">@Jerry</a>.
     </p>
     <ul class="bs-docs-footer-links muted">
-      <li>当前版本： v${VERSION}</li>
+      <li>当前版本： v<%= Common.VERISON %></li>
       <li>·</li>
       <li><a href="https://github.com/liyang1069/teardowall">GitHub 仓库</a></li>
       <li>·</li>
