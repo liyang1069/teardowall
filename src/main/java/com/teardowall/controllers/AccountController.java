@@ -47,7 +47,7 @@ public class AccountController extends BaseController {
 			msg = "密码请控制在6—16位!";
 		}
 		else if(Common.verifyEmail(emailUp) == false){
-			msg = "账户已存在，请使用其他邮箱!";
+			msg = "填写邮箱格式不正确,请重新填写!";
 		}
 		else if(accountService.findUserByEmail(emailUp) != null){
 			msg = "账户已存在，请使用其他邮箱!";
