@@ -37,7 +37,6 @@ public class LoginController extends BaseController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String login(HttpServletRequest request, Model model) {
 		System.out.println("GGGGGGGGGGGGGGGGG");
-		getSession();
 		if(Common.stringIsEmpty(userId) == false){
 			User user = accountService.findUserById(userId);
 			if(user != null && user.getEmailActive() == 1){

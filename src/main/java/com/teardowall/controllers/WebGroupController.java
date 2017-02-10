@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,9 +30,6 @@ public class WebGroupController extends BaseController {
 	
 	@RequestMapping(value = "/default", method = RequestMethod.GET)
 	public String defaultPage(HttpServletRequest request, Model model){
-		System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-		System.out.println("NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
-		getSession();
 		System.out.println(userId);
 		List<WebGroup> groups = null;
 		if(Common.stringIsEmpty(userId)){
@@ -59,7 +55,6 @@ public class WebGroupController extends BaseController {
 		if(Common.stringIsEmpty(webGroupId)){
 			return "redirect:/web_group/default";
 		}
-		getSession();
 		if(Common.stringIsEmpty(userId)){
 			return "redirect:/login";
 		}
@@ -74,7 +69,6 @@ public class WebGroupController extends BaseController {
 	
 	@RequestMapping(value="/add_group", method = RequestMethod.GET)
 	public String addOneGroup(HttpServletRequest request, Model model){
-		getSession();
 		if(Common.stringIsEmpty(userId)){
 			return "redirect:/login";
 		}
@@ -89,7 +83,6 @@ public class WebGroupController extends BaseController {
 	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(HttpServletRequest request,Model model){
-		getSession();
 		if(Common.stringIsEmpty(userId)){
 			return "redirect:/login";
 		}
@@ -103,7 +96,6 @@ public class WebGroupController extends BaseController {
 	
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public String update(WebConfig webConfig,HttpServletRequest request,Model model){
-		getSession();
 		if(Common.stringIsEmpty(userId)){
 			return "redirect:/login";
 		}
@@ -113,7 +105,6 @@ public class WebGroupController extends BaseController {
 	
 	@RequestMapping(value = "/{webGroupId}/delete_group", method = RequestMethod.GET)
 	public String deleteGroup(Model model, @PathVariable String webGroupId){
-		getSession();
 		if(Common.stringIsEmpty(userId)){
 			return "redirect:/login";
 		}
