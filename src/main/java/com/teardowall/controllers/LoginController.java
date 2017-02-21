@@ -14,12 +14,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.projectapi.teardowall.CreeperService;
 import com.teardowall.common.Common;
 import com.teardowall.models.User;
 import com.teardowall.services.WebGroupService;
 import com.teardowall.services.WebSiteService;
 import com.teardowall.services.account.AccountService;
+import com.teardowall.services.rpc.CreeperRpcService;
 
 @Controller
 @RequestMapping(value = "/login")
@@ -33,6 +36,10 @@ public class LoginController extends BaseController {
 	
 	@Resource
 	private AccountService accountService;
+	
+	@Resource
+	private CreeperRpcService creeperRpcService;
+	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String login(HttpServletRequest request, Model model) {
@@ -75,6 +82,14 @@ public class LoginController extends BaseController {
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public void signup(){
 		System.out.println("PPPPPPPPPPPPPPPPPPPPPP");
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/dubbo", method = RequestMethod.GET)
+	public String dubbo(){
+		String string = creeperRpcService.dubbo();
+		System.out.println(string);
+		return string;
 	}
 	
 //	private void loginOld(Model model){

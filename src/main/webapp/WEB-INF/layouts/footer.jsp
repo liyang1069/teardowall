@@ -18,6 +18,6 @@
       <li><a href="https://github.com/liyang1069/teardowall/blob/master/README.md">关于</a></li>
     </ul>
     <p>Anything is open source. Anything is internationalization. Anything is any persion.</p>
-    <p>TEAR DOWN THE WALL.WE ALL ARE A FAMILY.</p>
+    <p>TEAR DOWN THE WALL.WE ALL ARE ONE FAMILY.</p>
   </div>
 </footer>
