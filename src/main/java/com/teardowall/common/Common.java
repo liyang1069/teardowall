@@ -8,8 +8,10 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class Common {
-	public static final String VERISON = "0.4.4";
+	public static final String VERISON = "0.5.0";
 	public static String icon_path_relative = "/static/icon/";
 	public static String icon_path_absolute = "/Users/jerry.li/projects/java/cp_file/origin_project/src/main/webapp"+icon_path_relative;
 	public static int[] testArray = {1,2,3,4};
@@ -22,6 +24,7 @@ public class Common {
 	public static final String PASSWD_SUFFIX = "suffix";
 	public static final String ENCRYPY_STRING = "SHA-1";
 	public static final String STANDARD_DATE = "yyyy-MM-dd HH:mm:ss";
+	public static ClassPathXmlApplicationContext context;
 	
 	public static String encrypyPasswd(String passwd){
 		byte[] digesta = null;
@@ -87,5 +90,13 @@ public class Common {
 	public static String date2StringByFormat(Date date, String format){
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
+	}
+	
+	public static Object getBean(String beanName){
+		if(context == null){
+			context = new ClassPathXmlApplicationContext(new String[] { "spring-dubbo.xml" });
+	        context.start();
+		}
+		return context.getBean(beanName);
 	}
 }

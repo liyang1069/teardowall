@@ -10,13 +10,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.projectapi.teardowall.entity.WeatherBaidu;
 import com.teardowall.common.Common;
 import com.teardowall.models.WebGroup;
 import com.teardowall.models.WebSite;
 import com.teardowall.models.helpModel.WebConfig;
 import com.teardowall.services.WebGroupService;
 import com.teardowall.services.WebSiteService;
+import com.teardowall.services.account.AccountService;
 
 @Controller
 @RequestMapping(value = "/web_group")
@@ -27,6 +30,9 @@ public class WebGroupController extends BaseController {
 	
 	@Resource
 	private WebGroupService webGroupService;
+	
+	@Resource
+	private AccountService accountService;
 	
 	@RequestMapping(value = "/default", method = RequestMethod.GET)
 	public String defaultPage(HttpServletRequest request, Model model){
@@ -49,6 +55,42 @@ public class WebGroupController extends BaseController {
 		model.addAttribute("sites", sites);
 		return "index";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/get_weather",method = RequestMethod.GET)
+	public String getWeather(HttpServletRequest request){
+		String weatherString = "";
+		if(Common.stringIsEmpty(userId)){
+			return weatherString;
+		}
+		String ip = null;
+		ip = getIpAddress(request);
+		if (ip == null || "0:0:0:0:0:0:0:1".equals(ip)){
+			ip = "182.50.126.10";
+		}
+		weatherString = accountService.getWeatherByIp(ip, userId);
+		return weatherString;
+	}
+	
+	private String getIpAddress(HttpServletRequest request) { 
+	    String ip = request.getHeader("x-forwarded-for"); 
+	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) { 
+	      ip = request.getHeader("Proxy-Client-IP"); 
+	    } 
+	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) { 
+	      ip = request.getHeader("WL-Proxy-Client-IP"); 
+	    } 
+	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) { 
+	      ip = request.getHeader("HTTP_CLIENT_IP"); 
+	    } 
+	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) { 
+	      ip = request.getHeader("HTTP_X_FORWARDED_FOR"); 
+	    } 
+	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) { 
+	      ip = request.getRemoteAddr(); 
+	    } 
+	    return ip; 
+	  } 
 	
 	@RequestMapping(value="/{webGroupId}/web_config", method = RequestMethod.GET)
 	public String configWebGroup(HttpServletRequest request, Model model, @PathVariable String webGroupId){

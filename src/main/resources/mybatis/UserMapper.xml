@@ -13,12 +13,17 @@
 		<result column="phone_number" property="phoneNumber"/>
 		<result column="password" property="password"/>
 		<result column="salt" property="salt"/>
+		<result column="city_name" property="cityName"/>
+		<result column="county_name" property="countyName"/>
+		<result column="longitude" property="longitude"/>
+		<result column="latitude" property="latitude"/>
+		<result column="ip" property="ip"/>
 		<result column="created_at" property="createdAt"/>
 		<result column="updated_at" property="updatedAt"/>
 	</resultMap>
 	
 	<sql id="userColumns">
-		name, email, email_active, nick_name, phone_number, password, salt, created_at, updated_at
+		name, email, email_active, nick_name, phone_number, password, salt, city_name, longitude, latitude, ip, created_at, updated_at
 	</sql>
 	
 	<select id="findUserByEmail" parameterType="string" resultMap="userMap">
@@ -30,11 +35,11 @@
 	</select>
 	
 	<insert id="addUser" parameterType="com.teardowall.models.User">
-		insert into users (<include refid="userColumns"/>) values (#{name}, #{email}, #{emailActive}, #{nickName}, #{phoneNumber}, #{password}, #{salt}, #{createdAt}, #{updatedAt})
+		insert into users (<include refid="userColumns"/>) values (#{name}, #{email}, #{emailActive}, #{nickName}, #{phoneNumber}, #{password}, #{salt}, #{city_name}, #{longitude}, #{latitude}, #{ip}, #{createdAt}, #{updatedAt})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.teardowall.models.User">
-		update users set name = #{name}, email = #{email}, email_active = #{emailActive}, nick_name = #{nickName}, phone_number = #{phoneNumber}, password = #{password}, salt = #{salt}, created_at = #{createdAt}, updated_at = #{updatedAt} where id = #{id}
+		update users set name = #{name}, email = #{email}, email_active = #{emailActive}, nick_name = #{nickName}, phone_number = #{phoneNumber}, password = #{password}, salt = #{salt}, city_name = #{cityName}, county_name = #{countyName}, longitude = #{longitude}, latitude = #{latitude}, ip = #{ip}, created_at = #{createdAt}, updated_at = #{updatedAt} where id = #{id}
 	</update>
 	
 </mapper>

@@ -89,6 +89,7 @@ public class LoginController extends BaseController {
 	public String dubbo(){
 		String string = creeperRpcService.dubbo();
 		System.out.println(string);
+		//System.out.println(creeperRpcService.getWeather());
 		return string;
 	}
 	

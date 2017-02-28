@@ -59,7 +59,7 @@ public class IconGenerator {
 			if(e.attr("href").indexOf(".ico") >= 0){
 				iconUrl = e.attr("href");
 				if(iconUrl.indexOf("//") == 0){
-					iconUrl = iconUrl.substring(2);
+					//iconUrl = iconUrl.substring(2);
 				}
 				else if(iconUrl.indexOf("/") == 0){
 					if(urlStr.endsWith("/")){

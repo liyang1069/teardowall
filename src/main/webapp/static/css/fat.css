@@ -232,3 +232,8 @@ a:active {
 .button-glow.button-border{
   border-width: 1px;
 }
+.weather-label {
+  margin-top: 19px;
+  color: lawngreen;
+  text-align: right;
+}

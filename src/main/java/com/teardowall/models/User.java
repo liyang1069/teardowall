@@ -8,7 +8,30 @@ public class User extends BaseModel {
 	private String phoneNumber;
 	private String password;
 	private int salt;
+	private String cityName;
+	private String countyName;
+	private String longitude;
+	private String latitude;
+	private String ip;
 	
+	public String getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 	public int getSalt() {
 		return salt;
 	}
@@ -50,5 +73,17 @@ public class User extends BaseModel {
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+	public String getCountyName() {
+		return countyName;
+	}
+	public void setCountyName(String countyName) {
+		this.countyName = countyName;
 	}
 }

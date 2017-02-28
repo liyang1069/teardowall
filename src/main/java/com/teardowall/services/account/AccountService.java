@@ -10,11 +10,15 @@ import javax.mail.MessagingException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.projectapi.teardowall.entity.LocationTmp;
+import com.projectapi.teardowall.entity.Weather;
+import com.projectapi.teardowall.entity.WeatherBaidu;
 import com.teardowall.common.Common;
 import com.teardowall.mail.MailHelper;
 import com.teardowall.mapper.UserMapper;
 import com.teardowall.models.User;
 import com.teardowall.services.BaseService;
+import com.teardowall.services.rpc.CreeperRpcService;
 
 
 /**
@@ -35,6 +39,9 @@ public class AccountService extends BaseService {
   
   @Resource
   private UserMapper userMapper;
+  
+  @Resource
+  private CreeperRpcService creeperRpcService;
 
   public User findUserByEmail(String email) {
 	  User user = userMapper.findUserByEmail(email);
@@ -58,6 +65,41 @@ public class AccountService extends BaseService {
 	  user.setCreatedAt(date);
 	  user.setUpdatedAt(date);
 	  userMapper.addUser(user);
+  }
+  
+  public void updateUserLocation(LocationTmp location,User user, String ip){ 
+	  user.setCityName(location.getContent().getAddress_detail().getCity());
+	  user.setLongitude(location.getContent().getPoint().getX());
+	  user.setLatitude(location.getContent().getPoint().getY());
+	  user.setIp(ip);
+	  userMapper.updateUser(user);
+  }
+  
+  public String getWeatherByIp(String ip, String userId){
+	  if(Common.stringIsEmpty(ip))
+		  return null;
+	  User user = findUserById(userId);
+	  if(!ip.equals(user.getIp())){
+		  updateUserLocation(creeperRpcService.getLocation(ip), user, ip);
+	  }
+	  return creeperRpcService.getWeather(user.getCityName());
+  }
+  
+  public String generateWeatherString(WeatherBaidu weather){
+	  StringBuilder weatherString = new StringBuilder();
+	  if (weather == null){
+		  return weatherString.toString();
+	  }
+	  weatherString.append(weather.getCityName());
+	  weatherString.append(": ");
+	  weatherString.append(weather.getWeatherDate());
+	  weatherString.append(" ");
+	  weatherString.append(weather.getWeather());
+	  weatherString.append(" ");
+	  weatherString.append(weather.getWind());
+	  weatherString.append(" ");
+	  weatherString.append(weather.getTemperature());
+	  return weatherString.toString();
   }
   
   public void sendAuthenEmail(User user) throws IOException, MessagingException{

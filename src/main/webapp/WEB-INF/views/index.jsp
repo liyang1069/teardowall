@@ -14,7 +14,7 @@
   <header class="navbar navbar-static-top bs-docs-nav top-header" id="top" role="banner">
     <div class="container">
       <a href="#" class="col-md-1 navbar-brand" target="_blank">TEARDOWALL</a>
-      <label class="col-md-1 col-md-offset-9"></label>
+      <label id="weatherLabel" class="col-md-10 weather-label"></label><!-- col-md-offset-9 -->
       <!-- Single button -->
       
       <div class="btn-group margin-top-15">
@@ -108,6 +108,22 @@
       
     </div>
   </div>
+<script type="text/javascript">
+	setInterval(getWeather(), 1800000);
+	function getWeather(){
+		$.ajax({
+			url : "${ctx}/web_group/get_weather",
+            type : "GET",
+            dataType : 'text',
+            success : function(data){
+              $("#weatherLabel").html(data);
+            },
+            error : function(){
+              
+            }
+		});
+	}
+</script>
 </body>
 <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
 <script src="http://s1.bdstatic.com/r/www/cache/global/js/BaiduHttps_20150714_zhanzhang.js"></script>
