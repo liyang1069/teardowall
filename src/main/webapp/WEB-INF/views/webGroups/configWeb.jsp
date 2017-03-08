@@ -7,10 +7,7 @@
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
+
 <body>
   <form action="${ctx}/web_group/update" method="post">
     <div class="panel panel-default">

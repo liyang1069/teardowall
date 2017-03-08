@@ -45,12 +45,6 @@ public class WebGroupController extends BaseController {
 			groups = webGroupService.getGroupsByUserId(userId);
 		}
 		List<List<WebSite>> sites = webGroupService.getSitesByGroups(groups);
-		if(Common.stringIsEmpty(userName)){
-			model.addAttribute("username", "登录");
-		}
-		else{
-			model.addAttribute("username", userName);
-		}
 		model.addAttribute("groups", groups);
 		model.addAttribute("sites", sites);
 		return "index";
@@ -104,7 +98,6 @@ public class WebGroupController extends BaseController {
 		List<WebSite> sites = webGroupService.getSitesByGroupIdAndFillUp(webGroupId);
 		model.addAttribute("webGroupId", webGroupId);
 		model.addAttribute("webGroupName", group.getName());
-		model.addAttribute("username", userName);
 		model.addAttribute("sites", sites);
 		return "webGroups/configWeb";
 	}
@@ -118,7 +111,6 @@ public class WebGroupController extends BaseController {
 		List<WebSite> sites = webGroupService.getSitesByGroupIdAndFillUp("0");
 		model.addAttribute("webGroupId", "0");
 		model.addAttribute("webGroupName", group.getName());
-		model.addAttribute("username", userName);
 		model.addAttribute("sites", sites);
 		return "webGroups/configWeb";
 	}
@@ -130,7 +122,6 @@ public class WebGroupController extends BaseController {
 		}
 		List<WebGroup> groups = webGroupService.getGroupsByUserId(userId);
 		List<List<WebSite>> sites = webGroupService.getSitesByGroups(groups);
-		model.addAttribute("username", userName);
 		model.addAttribute("groups", groups);
 		model.addAttribute("sites", sites);
 		return "index";

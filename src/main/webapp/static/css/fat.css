@@ -237,3 +237,29 @@ a:active {
   color: lawngreen;
   text-align: right;
 }
+.donate-tabel {
+  width: 70%;
+  margin: 50px auto;
+}
+.jumbotron p{
+  margin-bottom: 5px !important;
+}
+.jumbotron-div {
+  padding: 50px;
+  width: 70%;
+  margin: auto;
+}
+.panel-pay {
+  width: 70%;
+  margin: 50px auto;
+}
+.zhidubao-img {
+  width: 300px;
+  height: 430px;
+  margin-top: 20px;
+}
+.weixin-img {
+  width: 300px;
+  height: 450px;
+  margin-left: 50px;
+}

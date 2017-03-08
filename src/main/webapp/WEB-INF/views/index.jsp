@@ -11,7 +11,7 @@
 <html>
 
 <body>
-  <header class="navbar navbar-static-top bs-docs-nav top-header" id="top" role="banner">
+  <%-- <header class="navbar navbar-static-top bs-docs-nav top-header" id="top" role="banner">
     <div class="container">
       <a href="#" class="col-md-1 navbar-brand" target="_blank">TEARDOWALL</a>
       <label id="weatherLabel" class="col-md-10 weather-label"></label><!-- col-md-offset-9 -->
@@ -32,7 +32,7 @@
 		
 	  </div>
     </div>
-  </header>
+  </header> --%>
   
   <div class="site-header jumbotron sem-div">
     <div class="container">

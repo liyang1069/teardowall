@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,12 +28,17 @@ public class BaseController {
 	}
 	
 	@ModelAttribute
-	protected void volidateUser(){
-		if (SecurityUtils.getSubject().isAuthenticated() == false && SecurityUtils.getSubject().isRemembered() == false)
+	protected void volidateUser(HttpServletRequest request, Model model){
+		if ((SecurityUtils.getSubject().isAuthenticated() == false && SecurityUtils.getSubject().isRemembered() == false) || request.getRequestURI().indexOf("/login") > 0 || request.getRequestURI().indexOf("/logout") > 0){
+			if (request.getRequestURI().indexOf("/login") < 0 && request.getRequestURI().indexOf("/logout") < 0){
+				model.addAttribute("username", "登录");
+			}
 			return;
+		}
 		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
 		userId = user.id;
 		userName = user.name;
+		model.addAttribute("username", userName);
 	}
 	
 }
