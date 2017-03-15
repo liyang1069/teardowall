@@ -7,13 +7,17 @@ import java.util.Date;
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import redis.clients.jedis.Jedis;
 
 import com.projectapi.teardowall.entity.LocationTmp;
 import com.projectapi.teardowall.entity.Weather;
 import com.projectapi.teardowall.entity.WeatherBaidu;
 import com.teardowall.common.Common;
+import com.teardowall.common.Redis;
 import com.teardowall.mail.MailHelper;
 import com.teardowall.mapper.UserMapper;
 import com.teardowall.models.User;
@@ -125,6 +129,25 @@ public class AccountService extends BaseService {
 		  }
 	  }
 	  return 2;
+  }
+  
+  public boolean authCookies(String userId, String userName){
+	  if (StringUtils.isEmpty(userId) || StringUtils.isEmpty(userName) || "0".equals(userId))
+		  return false;
+	  StringBuilder keyB = new StringBuilder("userId");
+	  keyB.append(userId);
+	  Jedis jedis = Redis.getJedis();
+	  if(jedis.exists(keyB.toString()) && userName.equals(jedis.get(keyB.toString()))){
+		  Redis.returnResource(jedis);
+		  return true;
+	  }
+	  User user = findUserById(userId);
+	  if (user == null || !userName.equals(user.getName()))
+		  return false;
+	  jedis.set(keyB.toString(), userName);
+	  Redis.returnResource(jedis);
+	  System.out.println("==========================================================================");
+	  return true;
   }
 
 }

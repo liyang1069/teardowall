@@ -35,7 +35,7 @@
 	</select>
 	
 	<insert id="addUser" parameterType="com.teardowall.models.User">
-		insert into users (<include refid="userColumns"/>) values (#{name}, #{email}, #{emailActive}, #{nickName}, #{phoneNumber}, #{password}, #{salt}, #{city_name}, #{longitude}, #{latitude}, #{ip}, #{createdAt}, #{updatedAt})
+		insert into users (<include refid="userColumns"/>) values (#{name}, #{email}, #{emailActive}, #{nickName}, #{phoneNumber}, #{password}, #{salt}, #{cityName}, #{longitude}, #{latitude}, #{ip}, #{createdAt}, #{updatedAt})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.teardowall.models.User">

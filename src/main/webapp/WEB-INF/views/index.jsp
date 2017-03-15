@@ -109,7 +109,7 @@
     </div>
   </div>
 <script type="text/javascript">
-	setInterval(getWeather(), 1800000);
+	//setInterval(getWeather(), 1800000);
 	function getWeather(){
 		$.ajax({
 			url : "${ctx}/web_group/get_weather",

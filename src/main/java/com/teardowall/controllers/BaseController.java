@@ -1,5 +1,6 @@
 package com.teardowall.controllers;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.teardowall.services.account.AccountService;
 import com.teardowall.services.account.ShiroDbRealm.ShiroUser;
 
 
 @Controller
 @RequestMapping(value = "/base")
 public class BaseController {
+	
+	@Resource
+	private AccountService accountService;
 
 	protected String userName;
 	protected String userId;
@@ -36,9 +41,11 @@ public class BaseController {
 			return;
 		}
 		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
-		userId = user.id;
-		userName = user.name;
-		model.addAttribute("username", userName);
+		if (accountService.authCookies(user.id, user.name)){
+			userId = user.id;
+			userName = user.name;
+			model.addAttribute("username", userName);
+		}
 	}
 	
 }
