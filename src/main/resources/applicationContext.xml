@@ -143,8 +143,24 @@
 			 <!-- 关闭Abanded连接时输出错误日志 -->
 			<property name="logAbandoned" value="true" /> 
 		</bean>
+				
+		<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+			<property name="brokerURL" value="tcp://123.57.247.225:61616" />
+			<property name="userName" value="admin" />
+			<property name="password" value="admin" />
+		</bean>
 		
+		<bean id="connectFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+			<property name="targetConnectionFactory" ref="targetConnectionFactory" />
+			<property name="sessionCacheSize" value="100" />
+		</bean>
 		
+		<!-- <bean id="jmsProducer" class="org.springframework.jms.core.JmsTemplate">
+			<constructor-arg ref="connectFactory" />
+			<property name="pubSubDomain" value="true" />
+		</bean> -->
+		
+		<bean id=""></bean>
 		
 	</beans>
 	

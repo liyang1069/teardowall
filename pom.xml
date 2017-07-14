@@ -106,6 +106,12 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+        	<version>${spring.version}</version>
+        </dependency>
 
 		<!-- Various Application Context utilities, including EhCache, JavaMail, 
 			Quartz, and Freemarker integration Define this if you need any of these integrations -->
@@ -523,6 +529,11 @@
 		</dependency>
 
 		<!-- TEST end -->
+		<dependency>
+		    <groupId>org.apache.activemq</groupId>
+		    <artifactId>activemq-spring</artifactId>
+		    <version>5.14.4</version>
+		</dependency>
 	</dependencies>
 
 
